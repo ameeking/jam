@@ -1,3 +1,10 @@
 <template>
-  <h1>ao ora</h1>
+  <main>
+    <h1>Hello again!</h1>
+  </main>
 </template>
+<script>
+  export default {
+    layout: 'nice'
+  }
+</script>
