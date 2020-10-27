@@ -5,6 +5,7 @@
     <img :src="product.image" />
   </main>
 </template>
+
 <script>
 import { mapState } from "vuex";
 

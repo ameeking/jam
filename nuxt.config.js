@@ -23,6 +23,9 @@ export default {
       // Simple usage
       '@nuxtjs/vuetify'
     ],
+    build: {
+      extractCSS: true
+    },
     generate: {
       routes: dynamicRoutes
     }

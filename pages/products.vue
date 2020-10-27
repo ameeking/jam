@@ -4,7 +4,6 @@
 
     <p>This lists out all our products</p>
 
-  <v-container>
     <v-row>
       <v-col
         class="d-flex child-flex"
@@ -16,7 +15,6 @@
         <ProductCard :name="product.name" :id="product.id" :image="product.image" />
       </v-col>
     </v-row>
-  </v-container>
   </main>
 </template>
 <script>
