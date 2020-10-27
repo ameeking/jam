@@ -2,49 +2,32 @@
   <main>
     <h1>Products</h1>
 
-    <v-container>
-      <v-row no-gutters>
-        <v-col
-          v-for="product in products" 
-          :key="product.id"
-          cols="12"
-          sm="4"
-          class="pa-2"
-        >
-          <v-card
-          class="mx-auto"
-          max-width="344"
-          >
-            <v-img
-              :src="product.image"
-              height="200px"
-            >
-              <v-card-title>{{ product.name }}</v-card-title>
-            </v-img>
+    <p>This lists out all our products</p>
 
-            <v-card-actions>
-              <v-btn
-                color="orange lighten-2"
-                text
-                :to="productLink(product.id)"
-              >
-                Explore
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-
-    
-
+  <v-container>
+    <v-row>
+      <v-col
+        class="d-flex child-flex"
+        v-for="product in products" 
+        :key="product.id"
+        cols="12"
+        sm="4"
+      >
+        <ProductCard :name="product.name" :id="product.id" :image="product.image" />
+      </v-col>
+    </v-row>
+  </v-container>
   </main>
 </template>
 <script>
 import { mapState } from "vuex";
+import ProductCard from "../components/ProductCard/ProductCard"
 
 export default {
   name: "category",
+  components: {
+    'ProductCard': ProductCard
+  },
   data() {
     return {
       id: this.$route.params.id

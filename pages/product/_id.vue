@@ -9,7 +9,7 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "category",
+  name: "product",
   data() {
     return {
       id: this.$route.params.id

@@ -7,11 +7,18 @@
     <v-container 
       class="py-0 fill-height"
       >
-      <v-avatar
-        class="mr-10"
-        color="grey darken-1"
-        size="32"
-      ></v-avatar>
+      <nuxt-link
+        to="/"
+      >
+        <v-img
+          class="mx-2"
+          src="https://i.imgur.com/qgGY4tB.png"
+          max-height="40"
+          max-width="40"
+          contain
+        ></v-img>
+      </nuxt-link>
+      
 
       <v-btn
         nuxt
@@ -42,6 +49,11 @@ export default {
           id: 1,
           path: '/products',
           name: "Products"
+        },
+        {
+          id: 1,
+          path: '/categories',
+          name: "Categories"
         }
       ]
     };
