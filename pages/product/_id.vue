@@ -19,7 +19,7 @@ export default {
     ...mapState(["storedata"]),
 
     product() {
-      return this.storedata[this.id];
+      return this.storedata.find(el => el.id === parseInt(this.id))
     }
   },
 };

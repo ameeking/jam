@@ -2,11 +2,47 @@
   <main>
     <h1>Products</h1>
 
-    <ul>
-      <li v-for="product in products" :key="product.id">
-        <a :href="productLink(product.id)"> {{ product.name }} </a>
-      </li>
-    </ul>
+    <v-container>
+      <v-row no-gutters>
+        <v-col
+          v-for="product in products" 
+          :key="product.id"
+          cols="12"
+          sm="4"
+          class="pa-2"
+        >
+          <v-card
+          class="mx-auto"
+          max-width="344"
+          >
+            <v-img
+              :src="product.image"
+              height="200px"
+            ></v-img>
+
+            <v-card-title>
+              {{ product.name }}
+            </v-card-title>
+
+            <v-card-subtitle>
+              {{ product.description}}
+            </v-card-subtitle>
+
+            <v-card-actions>
+              <v-btn
+                color="orange lighten-2"
+                text
+                :to="productLink(product.id)"
+              >
+                Explore
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    
 
   </main>
 </template>
