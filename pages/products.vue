@@ -18,15 +18,9 @@
             <v-img
               :src="product.image"
               height="200px"
-            ></v-img>
-
-            <v-card-title>
-              {{ product.name }}
-            </v-card-title>
-
-            <v-card-subtitle>
-              {{ product.description}}
-            </v-card-subtitle>
+            >
+              <v-card-title>{{ product.name }}</v-card-title>
+            </v-img>
 
             <v-card-actions>
               <v-btn
