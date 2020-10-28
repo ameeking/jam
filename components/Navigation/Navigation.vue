@@ -1,6 +1,11 @@
 <template>
   <nav class="navigation">
       <ul class="navigation__items">
+        <li class="navigation__item">
+          <nuxt-link to="/" class="navigation__home">
+            <slot></slot>
+          </nuxt-link>
+        </li>
         <li class="navigation__item" v-for="directory in directories" :key="directory.id">
           <nuxt-link :to="directory.path">
             {{ directory.name }}
@@ -16,11 +21,6 @@ export default {
   data() {
     return {
       directories: [
-        {
-          id: 0,
-          path: '/',
-          name: "JAM"
-        },
         {
           id: 1,
           path: '/about',
@@ -51,5 +51,9 @@ export default {
 .navigation__item {
   display: inline;
   padding: 0 1rem 0 0;
+}
+
+.navigation__home {
+  text-decoration: none;
 }
 </style>

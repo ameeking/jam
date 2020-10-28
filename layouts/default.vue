@@ -1,7 +1,9 @@
 <template>
   <div>
     <header class="header">
-      <Navigation />
+      <Navigation>
+        <Logo />
+      </Navigation>
     </header>
     <main class="main">
       <nuxt />
@@ -11,10 +13,12 @@
 
 <script>
   import Navigation from '../components/Navigation/Navigation';
+  import Logo from '../components/Logo/Logo';
 
   export default {
     components: {
-      'Navigation': Navigation
+      'Navigation': Navigation,
+      'Logo': Logo
     }
   }
 </script>
