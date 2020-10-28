@@ -26,6 +26,7 @@ export default {
       routes: dynamicRoutes
     },
     css: [
-      'normalize.css/normalize.css'
+      'normalize.css/normalize.css',
+      'assets/scss/main.scss'
     ]
 }

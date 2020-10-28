@@ -23,7 +23,7 @@ export default {
     items: [
       {
         id: 1,
-        name: 'Oceania :',
+        name: 'Oceania',
         to: '/',
         children: [
           { id: 2, name: 'Australia' },
@@ -33,9 +33,9 @@ export default {
       },
       {
         id: 5,
-        name: 'Asia :',
+        name: 'Asia',
         children: [
-          {id: 6, name: 'China :'},
+          {id: 6, name: 'China'},
           {id: 7, name: 'Thailand' },
           {id: 8, name: 'Vietnam' },
           {id: 9, name: 'Laos' },
@@ -43,7 +43,7 @@ export default {
       },
       {
         id: 10,
-        name: 'Europe :',
+        name: 'Europe',
         children: [
           { id: 11, name: 'Austria' },
           { id: 12, name: 'France' },
