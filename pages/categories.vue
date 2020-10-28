@@ -1,16 +1,19 @@
 <template>
-  <main>
+  <div>
     <h1>Categories</h1>
     <p>This lists out all the categories and the associated products</p>
 
-    <v-treeview :items="items">
-      <template slot="label" slot-scope="props">
-        <nuxt-link :to="props.item.to" v-if="props.item.to">{{ props.item.name }}</nuxt-link>
-        <span v-else>{{ props.item.name }}</span>
-      </template>
-    </v-treeview>
-
-  </main>
+    <ul>
+      <li v-for="item in items" :key="item.id">
+        {{ item.name }}
+        <ul v-if="item.children">
+          <li v-for="child in item.children" :key="child.id">
+            {{ child.name }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>

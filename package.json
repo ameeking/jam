@@ -11,10 +11,8 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0",
     "vuex-persist": "^2.2.0"
-  },
-  "devDependencies": {
-    "@nuxtjs/vuetify": "^1.11.2"
   }
 }

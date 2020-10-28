@@ -1,12 +1,6 @@
 <template>
-  <main>
+  <div>
     <h1>About</h1>
     <p>This is the about page</p>
-  </main>
+  </div>
 </template>
-
-<script>
-export default {
-  name: "about",
-};
-</script>

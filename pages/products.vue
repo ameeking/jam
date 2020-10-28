@@ -1,30 +1,25 @@
 <template>
-  <main>
+  <div>
     <h1>Products</h1>
 
     <p>This lists out all our products</p>
 
-    <v-row>
-      <v-col
-        class="d-flex child-flex"
-        v-for="product in products" 
-        :key="product.id"
-        cols="12"
-        sm="4"
-      >
-        <ProductCard :name="product.name" :id="product.id" :image="product.image" />
-      </v-col>
-    </v-row>
-  </main>
+    <div class="grid">
+      <div class="grid__col" v-for="product in products" :key="product.id">
+        <Card :name="product.name" :id="product.id" :image="product.image" />
+      </div>
+    </div>
+  </div>
 </template>
+
 <script>
 import { mapState } from "vuex";
-import ProductCard from "../components/ProductCard/ProductCard"
+import Card from "../components/Card/Card"
 
 export default {
   name: "category",
   components: {
-    'ProductCard': ProductCard
+    'Card': Card
   },
   data() {
     return {
@@ -45,3 +40,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+</style>

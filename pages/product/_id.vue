@@ -1,9 +1,9 @@
 <template>
-  <main>
+  <div>
     <h1>{{ product.name }}</h1>
     {{ product.description }}
     <img :src="product.image" />
-  </main>
+  </div>
 </template>
 
 <script>

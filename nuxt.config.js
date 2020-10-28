@@ -19,14 +19,13 @@ export default {
           { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
         ]
     },
-    buildModules: [
-      // Simple usage
-      '@nuxtjs/vuetify'
-    ],
     build: {
       extractCSS: true
     },
     generate: {
       routes: dynamicRoutes
-    }
+    },
+    css: [
+      'normalize.css/normalize.css'
+    ]
 }
