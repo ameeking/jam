@@ -26,7 +26,7 @@
 <style lang="scss">
 .header {
   padding: 1rem;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #8ecae6;
 }
 
 .main {
