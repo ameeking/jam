@@ -1,0 +1,15 @@
+query Posts {
+  posts {
+    id
+    title
+    author
+    content
+    image {
+      url
+    }
+    categories {
+      id
+      name
+    }
+  }
+}

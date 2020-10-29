@@ -1,4 +1,4 @@
-query Product($id: ID!) {
+query Category($id: ID!) {
   category(id: $id) {
     id
     name
@@ -13,6 +13,19 @@ query Product($id: ID!) {
       }
       image {
         url
+      }
+    }
+    posts {
+      id
+      title
+      author
+      content
+      image {
+        url
+      }
+      categories {
+        id
+        name
       }
     }
   }

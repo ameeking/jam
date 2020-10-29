@@ -3,17 +3,13 @@
     <div class="card__image" :style="{'background-image': 'url(http://localhost:1337' + image.url + ')'}" />
     <div class="card__content">
       <div class="card__title">
-        {{ name }}
+        {{ title }}
       </div>
-      <a class="card__chip" 
-        v-for="category in categories" :key="category.id" :href="categoryHref(category.id)">
-        {{ category.name }}
-      </a>
-      <p>{{ description }}</p>
+      <em>By {{ author }}</em>
     </div>
     <div class="card__footer">
       <nuxt-link :to="link">
-        View product
+        View post
       </nuxt-link>
     </div>
   </div>
@@ -21,16 +17,16 @@
 
 <script>
 export default {
-  name: "Card",
-  props: ['id', 'name', 'description', 'image', 'categories'],
+  name: "CardPost",
+  props: ['id', 'title', 'author', 'image'],
   computed: {
     link() {
-      return `/product/${this.id}`;
+      return `/post/${this.id}`;
     }
   },
   methods: {
     categoryHref(id) {
-      return `/category/${id}`;
+      return `/post/${id}`;
     }
   }
 };

@@ -31,8 +31,13 @@ export default {
           path: '/products',
           name: "Products"
         },
-        {
+                {
           id: 3,
+          path: '/blog',
+          name: "Blog"
+        },
+        {
+          id: 4,
           path: '/categories',
           name: "Categories"
         }
