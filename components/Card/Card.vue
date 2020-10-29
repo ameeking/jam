@@ -1,11 +1,15 @@
 <template>
   <div class="card">
-    <div class="card__image" :style="{'background-image': 'url(' + image + ')'}" />
+    <div class="card__image" :style="{'background-image': 'url(http://localhost:1337' + image.url + ')'}" />
     <div class="card__content">
       <div class="card__title">
         {{ name }}
       </div>
-      <p>This is a short description for the card component.</p>
+      <a class="card__chip" 
+        v-for="category in categories" :key="category.id" :href="categoryHref(category.id)">
+        {{ category.name }}
+      </a>
+      <p>{{ description }}</p>
     </div>
     <div class="card__footer">
       <nuxt-link :to="link">
@@ -18,10 +22,15 @@
 <script>
 export default {
   name: "Card",
-  props: ['id', 'name', 'image'],
+  props: ['id', 'name', 'description', 'image', 'categories'],
   computed: {
     link() {
       return `/product/${this.id}`;
+    }
+  },
+  methods: {
+    categoryHref(id) {
+      return `/category/${id}`;
     }
   }
 };
@@ -29,7 +38,17 @@ export default {
 
 <style lang="scss">
 .card {
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.card__chip {
+  font-size: 0.75rem;
+  border: 1px solid gray;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  text-decoration: none;
+  padding: 2px 5px;
 }
 
 .card__image {
@@ -47,9 +66,11 @@ export default {
 .card__title {
   font-size: 1.25rem;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  margin-bottom: 0.5rem;
 }
 
 .card__footer {
+  margin-top: auto;
   border-top: 1px solid lightgray;
   padding: 1rem;
 }

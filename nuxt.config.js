@@ -28,5 +28,15 @@ export default {
     css: [
       'normalize.css/normalize.css',
       'assets/scss/main.scss'
-    ]
+    ],
+    modules: [
+      '@nuxtjs/apollo',
+    ],
+    apollo: {
+      clientConfigs: {
+        default: {
+          httpEndpoint: 'http://localhost:1337/graphql'
+        }
+      }
+    },
 }

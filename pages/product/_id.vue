@@ -2,28 +2,38 @@
   <div>
     <h1>{{ product.name }}</h1>
     <div>
-      <img :src="product.image" />
+      <img :src="imagePath" />
     </div>
     <p>{{ product.description }}</p>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import productQuery from '~/apollo/queries/product/product'
 
 export default {
-  name: "product",
   data() {
     return {
-      id: this.$route.params.id
-    };
-  },
-  computed: {
-    ...mapState(["storedata"]),
-
-    product() {
-      return this.storedata.find(el => el.id === parseInt(this.id))
+      product: Object
     }
   },
-};
+  computed: {
+    imagePath() {
+      if (!this.product.image) {
+        return;
+      }
+
+      return `http://localhost:1337${this.product.image.url}`;
+    }
+  },
+  apollo: {
+    product: {
+      prefetch: true,
+      query: productQuery,
+      variables () {
+        return { id: this.$route.params.id }
+      }
+    }
+  }
+}
 </script>
