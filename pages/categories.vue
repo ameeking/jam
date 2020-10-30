@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Categories</h1>
-    <p>This lists out all the categories and the associated products</p>
 
     <ul>
       <li v-for="item in categories" :key="item.id">
