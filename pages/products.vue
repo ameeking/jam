@@ -3,33 +3,37 @@
     <h1>Products</h1>
 
     <form>
-      <input v-model="query" type="search" placeholder="Search...">
+      <input v-model="query" type="search" placeholder="Search..." />
     </form>
 
     <br />
 
-    <div class="grid">
-      <div class="grid__col" v-for="product in filteredList" :key="product.id">
-        <Card 
+    <Grid>
+      <GridCol v-for="product in filteredList" :key="product.id">
+        <CardProduct
           :name="product.name" 
           :id="product.id" 
           :image="product.image" 
           :description="product.description"
           :categories="product.categories"
         />
-      </div>
-    </div>
+      </GridCol>
+    </Grid>
   </div>
 </template>
 
 <script>
-import productsQuery from '~/apollo/queries/product/products'
-import Card from "../components/Card/Card"
+import productsQuery from "~/apollo/queries/product/products"
+import CardProduct from "../components/CardProduct/CardProduct"
+import Grid from "~/components/Grid/Grid";
+import GridCol from "~/components/Grid/GridCol";
 
 export default {
   name: "products",
   components: {
-    'Card': Card
+    'CardProduct': CardProduct,
+    'Grid': Grid,
+    'GridCol': GridCol
   },
   data() {
     return {

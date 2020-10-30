@@ -12,37 +12,39 @@
 
     <br />
 
-    <div class="grid">
-      <div class="grid__col" v-for="product in filteredList" :key="product.id">
-        <Card 
+    <Grid>
+      <GridCol v-for="product in filteredList" :key="product.id">
+        <CardProduct 
           :name="product.name" 
           :id="product.id" 
           :image="product.image" 
           :description="product.description"
           :categories="product.categories"
         />
-      </div>
-    </div>
+      </GridCol>
+    </Grid>
 
     <h2>Posts</h2>
 
-    <div class="grid">
-      <div class="grid__col" v-for="post in category.posts" :key="post.id">
+    <Grid>
+      <GridCol v-for="post in category.posts" :key="post.id">
         <CardPost 
           :title="post.title" 
           :id="post.id" 
           :image="post.image" 
           :author="post.author"
         />
-      </div>
-    </div>
+      </GridCol>
+    </Grid>
   </div>
 </template>
 
 <script>
 import categoryQuery from '~/apollo/queries/category/category'
-import Card from "~/components/Card/Card"
+import CardProduct from "~/components/CardProduct/CardProduct"
 import CardPost from "~/components/CardPost/CardPost"
+import Grid from "~/components/Grid/Grid";
+import GridCol from "~/components/Grid/GridCol";
 
 export default {
   data() {
@@ -52,8 +54,10 @@ export default {
     }
   },
   components: {
-    'Card': Card,
-    'CardPost': CardPost
+    'CardProduct': CardProduct,
+    'CardPost': CardPost,
+    'Grid': Grid,
+    'GridCol': GridCol
   },
   computed: {
     filteredList() {

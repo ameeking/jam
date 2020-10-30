@@ -1,13 +1,13 @@
 <template>
   <div class="grid">
-    <div class="grid_col">
-
-    </div>
+    <slot></slot>
   </div>
 </template>
 
-<script>
-export default {
-  name: "Grid",
+<style lang="scss">
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
 }
-</script>
+</style>

@@ -14,13 +14,3 @@ a {
 li {
   margin-bottom: 0.5rem;
 }
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 1rem;
-}
-
-.grid__col {
-  display: flex;
-}

@@ -8,27 +8,31 @@
 
     <br />
 
-    <div class="grid">
-      <div class="grid__col" v-for="post in filteredList" :key="post.id">
+    <Grid>
+      <GridCol v-for="post in filteredList" :key="post.id">
         <CardPost 
           :title="post.title" 
           :id="post.id" 
           :image="post.image" 
           :author="post.author"
         />
-      </div>
-    </div>
+      </GridCol>
+    </Grid>
   </div>
 </template>
 
 <script>
-import postsQuery from '~/apollo/queries/post/posts'
-import CardPost from "../components/CardPost/CardPost"
+import postsQuery from "~/apollo/queries/post/posts";
+import CardPost from "~/components/CardPost/CardPost";
+import Grid from "~/components/Grid/Grid";
+import GridCol from "~/components/Grid/GridCol";
 
 export default {
   name: "posts",
   components: {
-    'CardPost': CardPost
+    'CardPost': CardPost,
+    'Grid': Grid,
+    'GridCol': GridCol
   },
   data() {
     return {

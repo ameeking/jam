@@ -7,31 +7,31 @@
 
     <p>View the different categories</p>
     
-    <div class="grid">
-      <div class="grid__col" v-for="category in categories" :key="category.id">
+    <Grid>
+      <GridCol v-for="category in categories" :key="category.id">
         <CardCategory 
           :title="category.name" 
           :id="category.id" 
           :image="category.image"
         />
-      </div>
-    </div>
+      </GridCol>
+    </Grid>
 
     <br />
     <h2>Blog posts</h2>
 
     <p>Read the latest blog posts</p>
 
-    <div class="grid">
-      <div class="grid__col" v-for="post in posts" :key="post.id">
+    <Grid>
+      <GridCol v-for="post in posts" :key="post.id">
         <CardPost 
           :title="post.title" 
           :id="post.id" 
           :image="post.image" 
           :author="post.author"
         />
-      </div>
-    </div>
+      </GridCol>
+    </Grid>
   </div>
 </template>
 
@@ -40,12 +40,16 @@ import postsQuery from '~/apollo/queries/post/posts'
 import categoriesQuery from '~/apollo/queries/category/categories'
 import CardCategory from "../components/CardCategory/CardCategory"
 import CardPost from "../components/CardPost/CardPost"
+import Grid from "~/components/Grid/Grid";
+import GridCol from "~/components/Grid/GridCol";
 
 export default {
   name: "home",
   components: {
     'CardCategory': CardCategory,
-    'CardPost': CardPost
+    'CardPost': CardPost,
+    'Grid': Grid,
+    'GridCol': GridCol
   },
   data() {
     return {
