@@ -24,8 +24,7 @@
 <script>
 import postsQuery from "~/apollo/queries/post/posts";
 import CardPost from "~/components/CardPost/CardPost";
-import Grid from "~/components/Grid/Grid";
-import GridCol from "~/components/Grid/GridCol";
+import { Grid, GridCol } from "~/node_modules/flyweight"
 
 export default {
   name: "posts",

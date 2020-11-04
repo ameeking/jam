@@ -19,8 +19,7 @@
 </template>
 
 <script>
-import Card from "~/components/Card/Card";
-import Chip from "~/components/Chip/Chip";
+import { Card, Chip } from "~/node_modules/flyweight";
 
 export default {
   name: "CardProduct",

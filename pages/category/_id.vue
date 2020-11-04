@@ -43,8 +43,7 @@
 import categoryQuery from '~/apollo/queries/category/category'
 import CardProduct from "~/components/CardProduct/CardProduct"
 import CardPost from "~/components/CardPost/CardPost"
-import Grid from "~/components/Grid/Grid";
-import GridCol from "~/components/Grid/GridCol";
+import { Grid, GridCol } from "~/node_modules/flyweight"
 
 export default {
   data() {

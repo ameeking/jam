@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Card from "~/components/Card/Card";
+import { Card } from "~/node_modules/flyweight";
 
 export default {
   name: "CardPost",

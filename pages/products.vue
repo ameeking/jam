@@ -25,8 +25,7 @@
 <script>
 import productsQuery from "~/apollo/queries/product/products"
 import CardProduct from "../components/CardProduct/CardProduct"
-import Grid from "~/components/Grid/Grid";
-import GridCol from "~/components/Grid/GridCol";
+import { Grid, GridCol } from "~/node_modules/flyweight"
 
 export default {
   name: "products",
