@@ -1,23 +1,17 @@
 <template>
-  <Card :image="imagePath">
-    <template slot="header">
-      {{ title }}
-    </template>
-    <template slot="footer">
-      <nuxt-link :to="link">
-        View category
-      </nuxt-link>
-    </template>
-  </Card>
+  <Tile :image="imagePath">
+    {{ title }}
+  </Tile>
 </template>
 
 <script>
-import { Card } from "~/node_modules/flyweight";
+import { Tile, Button } from "~/node_modules/flyweight";
 
 export default {
   name: "CardCategory",
   components: {
-    'Card': Card,
+    'Tile': Tile,
+    'Button': Button
   },
   props: ['id', 'title', 'image'],
   computed: {

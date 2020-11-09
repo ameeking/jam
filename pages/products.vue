@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="l-container">
     <h1>Products</h1>
 
     <form>
@@ -9,7 +9,7 @@
     <br />
 
     <Grid>
-      <GridCol v-for="product in filteredList" :key="product.id">
+      <GridCol v-for="product in filteredList" :key="product.id" xs="3">
         <CardProduct
           :name="product.name" 
           :id="product.id" 

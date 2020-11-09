@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="l-container">
     <h1>{{ product.name }}</h1>
     <div>
       <img :src="imagePath" />

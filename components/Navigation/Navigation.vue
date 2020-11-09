@@ -1,5 +1,5 @@
 <template>
-  <nav class="navigation">
+  <nav class="navigation l-container">
       <ul class="navigation__items">
         <li class="navigation__item">
           <nuxt-link to="/" class="navigation__home">

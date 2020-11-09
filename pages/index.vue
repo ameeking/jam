@@ -1,14 +1,9 @@
 <template>
-  <div>
-    <h1>Welcome</h1>
-    <p>This is an example of Jamstack site using commonly used content structures and relationships.</p>
-
+  <div class="l-container">
     <h2>Categories</h2>
-
-    <p>View the different categories</p>
     
     <Grid>
-      <GridCol v-for="category in categories" :key="category.id">
+      <GridCol v-for="category in categories" :key="category.id" xs="2">
         <CardCategory 
           :title="category.name" 
           :id="category.id" 
@@ -20,10 +15,8 @@
     <br />
     <h2>Blog posts</h2>
 
-    <p>Read the latest blog posts</p>
-
     <Grid>
-      <GridCol v-for="post in posts" :key="post.id">
+      <GridCol v-for="post in posts" :key="post.id" xs="8">
         <CardPost 
           :title="post.title" 
           :id="post.id" 
@@ -52,6 +45,7 @@ export default {
   },
   data() {
     return {
+      type: 'right',
       categories: [],
       query: ''
     }

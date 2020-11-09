@@ -1,31 +1,24 @@
 <template>
-  <Card :image="imagePath">
-    <template slot="header">
-      {{ name }}
-    </template>
+  <Card :image="imagePath" :href="link">
     <template slot="content">
-      <Chip 
+      <span class="u-type--sm u-type--base-lt" 
         v-for="category in categories" :key="category.id" :href="categoryHref(category.id)">
         {{ category.name }}
-      </Chip>
-      <p>{{ description }}</p>
-    </template>
-    <template slot="footer">
-      <nuxt-link :to="link">
-        View product
-      </nuxt-link>
+      </span>
+      <h3 class="u-mb--0 u-mt--1">{{ name }} and some extra long text to make this amazing</h3>
     </template>
   </Card>
 </template>
 
 <script>
-import { Card, Chip } from "~/node_modules/flyweight";
+import { Card, Chip, Button } from "~/node_modules/flyweight";
 
 export default {
   name: "CardProduct",
   components: {
     'Card': Card,
     'Chip': Chip,
+    'Button': Button,
   },
   props: ['id', 'name', 'description', 'image', 'categories'],
   computed: {

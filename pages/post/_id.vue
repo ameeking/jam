@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="l-container">
     <h1>{{ post.name }}</h1>
     <em>By {{post.author }}</em>
     <div>

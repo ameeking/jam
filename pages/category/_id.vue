@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="l-container">
     <h1>{{ category.name }}</h1>
 
     <p>{{ category.description }}</p>
@@ -13,7 +13,7 @@
     <br />
 
     <Grid>
-      <GridCol v-for="product in filteredList" :key="product.id">
+      <GridCol v-for="product in filteredList" :key="product.id" xs="3">
         <CardProduct 
           :name="product.name" 
           :id="product.id" 
@@ -27,7 +27,7 @@
     <h2>Posts</h2>
 
     <Grid>
-      <GridCol v-for="post in category.posts" :key="post.id">
+      <GridCol v-for="post in category.posts" :key="post.id" xs="7">
         <CardPost 
           :title="post.title" 
           :id="post.id" 
