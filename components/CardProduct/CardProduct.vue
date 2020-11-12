@@ -1,11 +1,14 @@
 <template>
-  <Card :image="imagePath" :href="link">
+  <Card :image="imagePath" :border="border" scale="16:9">
     <template slot="content">
-      <span class="u-type--sm u-type--base-lt" 
-        v-for="category in categories" :key="category.id" :href="categoryHref(category.id)">
-        {{ category.name }}
-      </span>
-      <h3 class="u-mb--0 u-mt--1">{{ name }} and some extra long text to make this amazing</h3>
+      <div>
+        <Chip v-for="category in categories" :key="category.id" :href="categoryHref(category.id)">
+          {{ category.name }}
+        </Chip>
+      </div>
+      <h3 class="u-mb--0 u-mt--1">{{ name }}</h3>
+      <p>{{ description }}</p>
+      <Button class="u-mt--auto" :href="link" type="primary">View product</Button>
     </template>
   </Card>
 </template>
@@ -21,6 +24,11 @@ export default {
     'Button': Button,
   },
   props: ['id', 'name', 'description', 'image', 'categories'],
+  data() {
+    return {
+      border: true
+    }
+  },
   computed: {
     imagePath() {
       return `http://localhost:1337${this.image.url}`;

@@ -1,6 +1,5 @@
 <template>
   <div class="l-container">
-    <h1>{{ product.name }}</h1>
     <div>
       <img :src="imagePath" />
     </div>
@@ -34,6 +33,9 @@ export default {
         return { id: this.$route.params.id }
       }
     }
-  }
+  },
+  created() {
+    this.$store.commit('page/setTitle', this.product.name)
+  },
 }
 </script>

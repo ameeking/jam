@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/post/1", {data:[{}],fetch:[],mutations:[["page\u002FsetTitle","Object"]]});

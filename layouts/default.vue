@@ -1,10 +1,7 @@
 <template>
   <div>
-    <header class="header">
-      <Navigation>
-        <Logo />
-      </Navigation>
-    </header>
+    <Header>
+    </Header>
     <main class="main">
       <nuxt />
     </main>
@@ -12,24 +9,20 @@
 </template>
 
 <script>
-  import Navigation from '../components/Navigation/Navigation';
+  import Header from '../components/Header/Header';
   import Logo from '../components/Logo/Logo';
 
   export default {
     components: {
-      'Navigation': Navigation,
+      'Header': Header,
       'Logo': Logo
     }
   }
 </script>
 
-<style lang="scss">
-.header {
-  padding: 1rem;
-  border-bottom: 1px solid #8ecae6;
-}
-
+<style>
 .main {
-  padding: 1rem;
+  margin-top: 10rem;
+  margin-bottom: 20rem;
 }
 </style>

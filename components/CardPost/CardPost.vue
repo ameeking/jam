@@ -2,7 +2,7 @@
   <Card :image="imagePath" type="left" :href="link">
     <template slot="content">
       <div class="u-type--sm">{{ author }}</div>
-      <h3 class="u-mb--0 u-mt--0">{{ title }}</h3>
+      <h3 class="u-mb--0 u-mt--1">{{ title }}</h3>
       <p>This is some example post content that is medium long...</p>
     </template>
   </Card>

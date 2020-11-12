@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/", {data:[{}],fetch:[],mutations:[["page\u002FsetTitle","Welcome"]]});

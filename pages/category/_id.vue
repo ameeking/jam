@@ -1,7 +1,5 @@
 <template>
   <div class="l-container">
-    <h1>{{ category.name }}</h1>
-
     <p>{{ category.description }}</p>
 
     <h2>Products</h2>
@@ -75,6 +73,9 @@ export default {
         return { id: this.$route.params.id }
       }
     }
-  }
+  },
+  created() {
+    this.$store.commit('page/setTitle', this.category.name)
+  },
 }
 </script>

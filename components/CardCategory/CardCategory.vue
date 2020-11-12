@@ -1,16 +1,18 @@
 <template>
-  <Tile :image="imagePath">
-    {{ title }}
-  </Tile>
+  <Card :image="imagePath" :href="link" scale="9:16" border="true">
+    <template slot="content">
+      {{ title }}
+    </template>
+  </Card>
 </template>
 
 <script>
-import { Tile, Button } from "~/node_modules/flyweight";
+import { Card, Button } from "~/node_modules/flyweight";
 
 export default {
   name: "CardCategory",
   components: {
-    'Tile': Tile,
+    'Card': Card,
     'Button': Button
   },
   props: ['id', 'title', 'image'],

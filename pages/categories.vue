@@ -1,7 +1,5 @@
 <template>
   <div class="l-container">
-    <h1>Categories</h1>
-
     <ul>
       <li v-for="item in categories" :key="item.id">
         <nuxt-link :to="categoryHref(item.id)">
@@ -40,6 +38,9 @@ export default {
         return categories.name.toLowerCase().includes(this.query.toLowerCase())
       })
     },
-  }
+  },
+  created() {
+    this.$store.commit('page/setTitle', 'Categories')
+  },
 }
 </script>

@@ -1,7 +1,5 @@
 <template>
   <div class="l-container">
-    <h1>Blog</h1>
-
     <form>
       <input v-model="query" type="search" placeholder="Search...">
     </form>
@@ -51,6 +49,9 @@ export default {
         return post.title.toLowerCase().includes(this.query.toLowerCase())
       })
     },
-  }
+  },
+  created() {
+    this.$store.commit('page/setTitle', 'Blog')
+  },
 }
 </script>
