@@ -50,8 +50,9 @@ export default {
       })
     },
   },
-  created() {
-    this.$store.commit('page/setTitle', 'Blog')
+  mounted() {
+    this.$store.commit('page/setTitle', 'Blog');
+    this.$store.commit('page/setBanner', '');
   },
 }
 </script>

@@ -46,7 +46,11 @@ import { Grid, GridCol } from "~/node_modules/flyweight"
 export default {
   data() {
     return {
-      category: [],
+      category: {
+        image: {
+          url: ''
+        }
+      },
       query: ''
     }
   },
@@ -71,11 +75,12 @@ export default {
       query: categoryQuery,
       variables () {
         return { id: this.$route.params.id }
+      },
+      result () {
+        this.$store.commit('page/setTitle', this.category.name);
+        this.$store.commit('page/setBanner', `http://localhost:1337${this.category.image.url}`);
       }
     }
-  },
-  created() {
-    this.$store.commit('page/setTitle', this.category.name)
-  },
+  }
 }
 </script>

@@ -32,11 +32,14 @@ export default {
       query: postQuery,
       variables () {
         return { id: this.$route.params.id }
+      },
+      result () {
+        this.$store.commit('page/setTitle', this.post.name);
       }
     }
   },
   created() {
-    this.$store.commit('page/setTitle', this.post.name)
+    this.$store.commit('page/setBanner', '');
   },
 }
 </script>

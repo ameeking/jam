@@ -18,7 +18,7 @@ export default {
     computedClasses() {
       return [
         'logo__svg',
-        this.inverse ? 'logo__svg--inverse' : null
+        this.inverse ? null : 'logo__svg--inverse'
       ]
     }
   }
@@ -35,7 +35,6 @@ export default {
   color: #ffb703;
   text-shadow: 3px 0 #023047;
   position: relative;
-  margin-bottom: -12px;
 }
 
 .logo__svg {

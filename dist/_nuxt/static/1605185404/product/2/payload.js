@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/product/2", {data:[{}],fetch:[],mutations:[["page\u002FsetTitle","Object"]]});

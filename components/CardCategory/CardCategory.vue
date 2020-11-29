@@ -1,5 +1,5 @@
 <template>
-  <Card :image="imagePath" :href="link" scale="9:16" border="true">
+  <Card :image="imagePath" :href="link" scale="9:16" border>
     <template slot="content">
       {{ title }}
     </template>

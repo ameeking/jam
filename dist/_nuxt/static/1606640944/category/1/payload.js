@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/category/1", {data:[{}],fetch:[],mutations:[["page\u002FsetTitle","Hiking"],["page\u002FsetBanner","http:\u002F\u002Flocalhost:1337\u002Fuploads\u002Fphoto_1501555088652_021faa106b9b_6b6ba20a1e.jpeg"]]});

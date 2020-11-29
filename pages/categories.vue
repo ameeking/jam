@@ -39,8 +39,9 @@ export default {
       })
     },
   },
-  created() {
-    this.$store.commit('page/setTitle', 'Categories')
+  mounted() {
+    this.$store.commit('page/setTitle', 'Categories');
+    this.$store.commit('page/setBanner', '');
   },
 }
 </script>

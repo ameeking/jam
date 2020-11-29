@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="l-container">
-      <h2>Categories</h2>
+      <h2>Pick your adventure</h2>
       
       <Grid>
         <GridCol v-for="category in categories" :key="category.id" xs="2">
@@ -15,7 +15,7 @@
     </div>
 
     <div class="l-container u-mt--8 u-pt--5 u-pb--8 u-color--gray-ltr">
-      <h2 class="u-mt--0">Blog posts</h2>
+      <h2 class="u-mt--0">Get inspired</h2>
 
       <Grid>
         <GridCol v-for="post in posts" :key="post.id" xs="7">
@@ -30,7 +30,7 @@
     </div>
 
     <div class="l-container">
-      <h2 class="u-mt--8">Products</h2>
+      <h2 class="u-mt--8">Popular adventures</h2>
       <Grid>
         <GridCol v-for="product in products" :key="product.id" xs="3">
           <CardProduct
@@ -97,8 +97,9 @@ export default {
       })
     },
   },
-  created() {
-    this.$store.commit('page/setTitle', 'Welcome')
+  mounted() {
+    this.$store.commit('page/setTitle', '');
+    this.$store.commit('page/setBanner', 'https://cdn.pixabay.com/photo/2019/04/22/01/51/south-tyrol-4145438_1280.jpg');
   },
 }
 </script>

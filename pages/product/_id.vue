@@ -35,7 +35,8 @@ export default {
     }
   },
   created() {
-    this.$store.commit('page/setTitle', this.product.name)
+    this.$store.commit('page/setTitle', this.product.name);
+    this.$store.commit('page/setBanner', '');
   },
 }
 </script>
