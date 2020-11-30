@@ -1,0 +1,18 @@
+query Location($id: ID!) {
+  location(id: $id) {
+    id
+    name
+    products {
+      id
+      name
+      description
+      categories {
+        id
+        name
+      }
+      image {
+        url
+      }
+    }
+  }
+}

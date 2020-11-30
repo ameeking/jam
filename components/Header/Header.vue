@@ -6,7 +6,6 @@
           <Logo :inverse="hasImage" />
         </template>
         <template slot="utilities">
-          <Button type="primary">Login</Button>
           <Button type="secondary">Search</Button>
         </template>
       </HeaderBar>

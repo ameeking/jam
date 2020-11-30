@@ -10,5 +10,9 @@ query Products {
       id
       name
     }
+    locations {
+      id
+      name
+    }
   }
 }
