@@ -6,10 +6,9 @@
           <Logo :inverse="hasImage" />
         </template>
         <template slot="utilities">
-          <Button type="secondary">Search</Button>
+          <Button href="/search" type="secondary">Search</Button>
         </template>
       </HeaderBar>
-
       <h1 :class="titleClass">{{ title }}</h1>
     </Banner>
   </header>
@@ -37,16 +36,11 @@ export default {
         },
         {
           id: 2,
-          path: '/products',
-          name: "Products"
-        },
-                {
-          id: 3,
           path: '/blog',
           name: "Blog"
         },
         {
-          id: 4,
+          id: 3,
           path: '/categories',
           name: "Categories"
         }
