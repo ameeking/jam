@@ -4,17 +4,18 @@
     <main class="main">
       <nuxt />
     </main>
+    <Footer />
   </div>
 </template>
 
 <script>
   import Header from '../components/Header/Header';
-  import Logo from '../components/Logo/Logo';
+  import Footer from '../components/Footer/Footer';
 
   export default {
     components: {
       'Header': Header,
-      'Logo': Logo
+      'Footer': Footer
     },
     computed: {
       title() {

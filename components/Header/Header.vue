@@ -70,28 +70,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.header-nav {
-  display: flex;
-  align-items: center;
-  padding: 2rem 10rem;
-  border-bottom: 1px solid gray;
-}
-
-.header__title {
-  position: absolute;
-  bottom: 0;
-  color: white;
-  font-size: 7rem;
-}
-
-.header__menu  {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.header__utilities {
-  margin-left: auto;
-}
-</style>

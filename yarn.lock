@@ -4926,7 +4926,7 @@ flush-write-stream@^1.0.0:
 
 flyweight@ameeking/flyweight.git#main:
   version "0.1.0"
-  resolved "https://codeload.github.com/ameeking/flyweight/tar.gz/7be33975e9becfe9728e0e244dcbea04693abee5"
+  resolved "https://codeload.github.com/ameeking/flyweight/tar.gz/498493e7a22ed450d722e09db6089fe1292fee8b"
   dependencies:
     core-js "^3.6.5"
     vue "^2.6.11"
