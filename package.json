@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.1-rc.4",
+    "@nuxtjs/axios": "^5.12.3",
     "apollo-cache-inmemory": "^1.6.6",
     "flyweight": "ameeking/flyweight.git#main",
     "graphql": "^15.4.0",

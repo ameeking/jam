@@ -47,9 +47,9 @@
 </template>
 
 <script>
-import productsQuery from "~/apollo/queries/product/products"
-import postsQuery from '~/apollo/queries/post/posts'
-import categoriesQuery from '~/apollo/queries/category/categories'
+// import productsQuery from "~/apollo/queries/product/products"
+// import postsQuery from '~/apollo/queries/post/posts'
+// import categoriesQuery from '~/apollo/queries/category/categories'
 import CardCategory from "../components/CardCategory/CardCategory"
 import CardPost from "../components/CardPost/CardPost"
 import CardProduct from "../components/CardProduct/CardProduct"
@@ -68,23 +68,25 @@ export default {
     return {
       type: 'right',
       categories: [],
+      posts: [],
+      products: [],
       query: ''
     }
   },
-  apollo: {
-    categories: {
-      prefetch: true,
-      query: categoriesQuery
-    },
-    posts: {
-      prefetch: true,
-      query: postsQuery
-    },
-    products: {
-      prefetch: true,
-      query: productsQuery
-    }
-  },
+  // apollo: {
+  //   categories: {
+  //     prefetch: true,
+  //     query: categoriesQuery
+  //   },
+  //   posts: {
+  //     prefetch: true,
+  //     query: postsQuery
+  //   },
+  //   products: {
+  //     prefetch: true,
+  //     query: productsQuery
+  //   }
+  // },
   methods: {
     categoryHref(id) {
       return `/category/${id}`;

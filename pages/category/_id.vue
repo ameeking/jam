@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import categoryQuery from '~/apollo/queries/category/category'
+// import categoryQuery from '~/apollo/queries/category/category'
 import CardProduct from "~/components/CardProduct/CardProduct"
 import CardPost from "~/components/CardPost/CardPost"
 import { Grid, GridCol } from "~/node_modules/flyweight"
@@ -69,18 +69,18 @@ export default {
       }
     },
   },
-  apollo: {
-    category: {
-      prefetch: true,
-      query: categoryQuery,
-      variables () {
-        return { id: this.$route.params.id }
-      },
-      result () {
-        this.$store.commit('page/setTitle', this.category.name);
-        this.$store.commit('page/setBanner', `http://localhost:1337${this.category.image.url}`);
-      }
-    }
-  }
+  // apollo: {
+  //   category: {
+  //     prefetch: true,
+  //     query: categoryQuery,
+  //     variables () {
+  //       return { id: this.$route.params.id }
+  //     },
+  //     result () {
+  //       this.$store.commit('page/setTitle', this.category.name);
+  //       this.$store.commit('page/setBanner', `http://localhost:1337${this.category.image.url}`);
+  //     }
+  //   }
+  // }
 }
 </script>

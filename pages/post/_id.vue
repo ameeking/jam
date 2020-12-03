@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import postQuery from '~/apollo/queries/post/post'
+// import postQuery from '~/apollo/queries/post/post'
 
 export default {
   data() {
@@ -26,18 +26,18 @@ export default {
       return `http://localhost:1337${this.post.image.url}`;
     }
   },
-  apollo: {
-    post: {
-      prefetch: true,
-      query: postQuery,
-      variables () {
-        return { id: this.$route.params.id }
-      },
-      result () {
-        this.$store.commit('page/setTitle', this.post.name);
-      }
-    }
-  },
+  // apollo: {
+  //   post: {
+  //     prefetch: true,
+  //     query: postQuery,
+  //     variables () {
+  //       return { id: this.$route.params.id }
+  //     },
+  //     result () {
+  //       this.$store.commit('page/setTitle', this.post.name);
+  //     }
+  //   }
+  // },
   created() {
     this.$store.commit('page/setBanner', '');
   },

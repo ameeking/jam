@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import categoriesQuery from '~/apollo/queries/category/categories'
+// import categoriesQuery from '~/apollo/queries/category/categories'
 
 export default {
   name: "categories",
@@ -21,12 +21,12 @@ export default {
       query: ''
     }
   },
-  apollo: {
-    categories: {
-      prefetch: true,
-      query: categoriesQuery
-    }
-  },
+  // apollo: {
+  //   categories: {
+  //     prefetch: true,
+  //     query: categoriesQuery
+  //   }
+  // },
   methods: {
     categoryHref(id) {
       return `/category/${id}`;

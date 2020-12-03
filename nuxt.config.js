@@ -1,11 +1,3 @@
-import data from './static/MOCK_DATA.json'
-
-let dynamicRoutes = () => {
- return new Promise(resolve => {
-   resolve(data.map(el => `/product/${el.id}`))
- })
-}
-
 export default {
     target: 'static',
     head: {
@@ -22,21 +14,14 @@ export default {
     build: {
       extractCSS: true
     },
-    generate: {
-      routes: dynamicRoutes
-    },
     css: [
       'normalize.css/normalize.css',
       'assets/scss/main.scss'
     ],
     modules: [
-      '@nuxtjs/apollo',
+      '@nuxtjs/axios'
     ],
-    apollo: {
-      clientConfigs: {
-        default: {
-          httpEndpoint: 'http://localhost:1337/graphql'
-        }
-      }
-    },
+    axios: {
+      // proxy: true
+    }
 }

@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import categoriesQuery from "~/apollo/queries/category/categories"
-import locationsQuery from "~/apollo/queries/location/locations"
+// import categoriesQuery from "~/apollo/queries/category/categories"
+// import locationsQuery from "~/apollo/queries/location/locations"
 
 import { Grid, GridCol, Button } from "~/node_modules/flyweight";
 import Logo from '../Logo/Logo';
@@ -58,18 +58,20 @@ export default {
   },
   data() {
     return {
+      locations: [],
+      categories: []
     }
   },
-  apollo: {
-    locations: {
-      prefetch: true,
-      query: locationsQuery
-    },
-    categories: {
-      prefetch: true,
-      query: categoriesQuery
-    }
-  },
+  // apollo: {
+  //   locations: {
+  //     prefetch: true,
+  //     query: locationsQuery
+  //   },
+  //   categories: {
+  //     prefetch: true,
+  //     query: categoriesQuery
+  //   }
+  // },
   computed: {
 
   }

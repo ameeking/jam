@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import productQuery from '~/apollo/queries/product/product'
+// import productQuery from '~/apollo/queries/product/product'
 
 export default {
   data() {
@@ -25,15 +25,15 @@ export default {
       return `http://localhost:1337${this.product.image.url}`;
     }
   },
-  apollo: {
-    product: {
-      prefetch: true,
-      query: productQuery,
-      variables () {
-        return { id: this.$route.params.id }
-      }
-    }
-  },
+  // apollo: {
+  //   product: {
+  //     prefetch: true,
+  //     query: productQuery,
+  //     variables () {
+  //       return { id: this.$route.params.id }
+  //     }
+  //   }
+  // },
   created() {
     this.$store.commit('page/setTitle', this.product.name);
     this.$store.commit('page/setBanner', '');

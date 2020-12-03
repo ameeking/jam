@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import postsQuery from "~/apollo/queries/post/posts";
+// import postsQuery from "~/apollo/queries/post/posts";
 import CardPost from "~/components/CardPost/CardPost";
 import { Grid, GridCol } from "~/node_modules/flyweight"
 
@@ -37,12 +37,12 @@ export default {
       query: ''
     }
   },
-  apollo: {
-    posts: {
-      prefetch: true,
-      query: postsQuery
-    }
-  },
+  // apollo: {
+  //   posts: {
+  //     prefetch: true,
+  //     query: postsQuery
+  //   }
+  // },
   computed: {
     filteredList() {
       return this.posts.filter(post => {
