@@ -9,7 +9,7 @@
         <strong>Category</strong>
         <div v-for="category in categories" :key="category.id">
           <input type="checkbox" :id="`cat-${category.id}`" :value="category.id" v-model="categoriesModel">
-          <label :for="`cat-${category.id}`">{{ category.name }}</label>
+          <label :for="`cat-${category.id}`">{{ category.title }}</label>
         </div>
 
         <strong class="u-mt--4">Location</strong>
@@ -22,10 +22,11 @@
         <Grid>
           <GridCol v-for="product in filteredProducts" :key="product.id" xs="4">
             <CardProduct
-              :name="product.attributes.title" 
-              :id="product.attributes.id" 
-              :image="product.relationships.field_image" 
-              :description="product.attributes.body.value"
+              :name="product.title" 
+              :id="product.id" 
+              :image="product.field_image" 
+              :description="product.body.summary"
+              :categories="product.field_category"
             />
           </GridCol>
         </Grid>
@@ -36,6 +37,7 @@
 
 <script>
 // import productsQuery from "~/apollo/queries/product/products"
+import jsonapiParse from 'jsonapi-parse';
 import CardProduct from "../components/CardProduct/CardProduct"
 import { Grid, GridCol } from "~/node_modules/flyweight"
 
@@ -73,19 +75,19 @@ export default {
   computed: {
     filteredProducts() {
       return this.products.filter(product => {
-        return product.attributes.title.toLowerCase().includes(this.query.toLowerCase()) 
-        // && product.categories.some(this.matchesCategoriesModel) 
+        return product.title.toLowerCase().includes(this.query.toLowerCase()) 
+        && product.field_category.some(this.matchesCategoriesModel) 
         // && product.locations.some(this.matchesLocationsModel)
       })
     },
     categories() {
       let categories = {};
 
-      // this.filteredProducts.forEach(function (product) {
-      //   product.categories.forEach(function (category) {
-      //     categories[category.id] = category;
-      //   })
-      // });
+      this.filteredProducts.forEach(function (product) {
+        product.field_category.forEach(function (category) {
+          categories[category.id] = category;
+        })
+      });
 
       return categories;
     },
@@ -105,8 +107,9 @@ export default {
     this.$store.commit('page/setTitle', 'Search');
     this.$store.commit('page/setBanner', '');
 
-    this.$axios.$get('https://drupal-9-headless.lndo.site/jsonapi/node/product?include=field_image')
+    this.$axios.$get('https://drupal-9-headless.lndo.site/jsonapi/node/product?include=field_image,field_category')
       .then(response => {
+        response = jsonapiParse.parse(response);
         this.products = response.data;
         console.log(this.products);
       })
