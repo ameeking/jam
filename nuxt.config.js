@@ -22,6 +22,6 @@ export default {
       '@nuxtjs/axios'
     ],
     axios: {
-      // proxy: true
+      baseURL: process.env.API_URL,
     }
 }

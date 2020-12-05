@@ -36,10 +36,10 @@
 </template>
 
 <script>
-// import productsQuery from "~/apollo/queries/product/products"
 import jsonapiParse from 'jsonapi-parse';
 import CardProduct from "../components/CardProduct/CardProduct"
 import { Grid, GridCol } from "~/node_modules/flyweight"
+import https from 'https'
 
 export default {
   name: "products",
@@ -57,6 +57,11 @@ export default {
     }
   },
   methods: {
+    async getProducts() {
+      let response = await this.$store.dispatch("product/getProducts");
+      // console.log(response);
+      this.products = response.data;
+    },
     matchesCategoriesModel(el) {
       if(this.categoriesModel.indexOf(el.id) !== -1 || this.categoriesModel.length === 0) {
         return true;
@@ -107,13 +112,18 @@ export default {
     this.$store.commit('page/setTitle', 'Search');
     this.$store.commit('page/setBanner', '');
 
-    this.$axios.$get('https://drupal-9-headless.lndo.site/jsonapi/node/product?include=field_image,field_category')
-      .then(response => {
-        response = jsonapiParse.parse(response);
-        this.products = response.data;
-        console.log(this.products);
-      })
-      .catch(error => console.log(error))
+    this.getProducts();
   },
+  // async asyncData({ $axios }) {
+  //   let res = await $axios.$get(
+  //     'https://drupal-9-headless.lndo.site/jsonapi/node/product?include=field_image,field_category',
+  //     {
+  //       httpsAgent: new https.Agent({
+  //       rejectUnauthorized: false
+  //     })
+  //   });
+  //   res = jsonapiParse.parse(res);
+  //   return { products: res.data};
+  // },
 }
 </script>

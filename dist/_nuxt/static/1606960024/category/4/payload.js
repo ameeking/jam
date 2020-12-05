@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/category/4", {data:[{}],fetch:[],mutations:[["page\u002FsetTitle","Climbing"],["page\u002FsetBanner","http:\u002F\u002Flocalhost:1337\u002Fuploads\u002Fice_climbing_4000385_1280_97782d82f8.jpg"]]});
