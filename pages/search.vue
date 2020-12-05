@@ -36,9 +36,11 @@
 </template>
 
 <script>
-import jsonapiParse from 'jsonapi-parse';
+import { getAllProducts } from '../api/product';
 import CardProduct from "../components/CardProduct/CardProduct"
 import { Grid, GridCol } from "~/node_modules/flyweight"
+
+import jsonapiParse from 'jsonapi-parse';
 import https from 'https'
 
 export default {
@@ -57,11 +59,6 @@ export default {
     }
   },
   methods: {
-    async getProducts() {
-      let response = await this.$store.dispatch("product/getProducts");
-      // console.log(response);
-      this.products = response.data;
-    },
     matchesCategoriesModel(el) {
       if(this.categoriesModel.indexOf(el.id) !== -1 || this.categoriesModel.length === 0) {
         return true;
@@ -111,19 +108,11 @@ export default {
   mounted() {
     this.$store.commit('page/setTitle', 'Search');
     this.$store.commit('page/setBanner', '');
-
-    this.getProducts();
   },
-  // async asyncData({ $axios }) {
-  //   let res = await $axios.$get(
-  //     'https://drupal-9-headless.lndo.site/jsonapi/node/product?include=field_image,field_category',
-  //     {
-  //       httpsAgent: new https.Agent({
-  //       rejectUnauthorized: false
-  //     })
-  //   });
-  //   res = jsonapiParse.parse(res);
-  //   return { products: res.data};
-  // },
+  async asyncData({ $axios }) {
+    let response = await getAllProducts();
+
+    return { products: response };
+  },
 }
 </script>

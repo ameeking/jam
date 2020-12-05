@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/product/c4f496aa-7dc5-470f-ab5b-7fadd87879e2", {data:[{}],fetch:[],mutations:[["page\u002FsetTitle","Object"],["page\u002FsetBanner",""]]});
