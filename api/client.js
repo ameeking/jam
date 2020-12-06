@@ -10,7 +10,7 @@ import qs from 'qs';
 export default {
   get: async (uri, params = null) => {
     let query = params ? '?' + qs.stringify(params, { indices: false }) : '';
-    let url = `${process.env.API_URL}${uri}${query}`
+    let url = `http://drupal-9-headless.lndo.site/jsonapi/node/${uri}${query}`;
     let response = await axios.get(url);
 
     return jsonapiParse.parse(response.data).data;

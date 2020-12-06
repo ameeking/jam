@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { getAllProducts } from '../api/product';
+import { getAllProducts } from '~/api/product';
 import CardProduct from "../components/CardProduct/CardProduct"
 import { Grid, GridCol } from "~/node_modules/flyweight"
 
@@ -109,7 +109,7 @@ export default {
     this.$store.commit('page/setTitle', 'Search');
     this.$store.commit('page/setBanner', '');
   },
-  async asyncData({ $axios }) {
+  async asyncData({ $axios, $config }) {
     let response = await getAllProducts();
 
     return { products: response };

@@ -1,5 +1,8 @@
 export default {
     target: 'static',
+    publicRuntimeConfig: {
+      apiURL: process.env.API_URL
+    },
     head: {
         title: 'Jam',
         meta: [
@@ -20,8 +23,5 @@ export default {
     ],
     modules: [
       '@nuxtjs/axios'
-    ],
-    axios: {
-      baseURL: process.env.API_URL,
-    }
+    ]
 }
