@@ -3,6 +3,9 @@ export default {
     publicRuntimeConfig: {
       apiURL: process.env.API_URL
     },
+    plugins: [
+      '~/plugins/repository.js',
+    ],
     head: {
         title: 'Jam',
         meta: [

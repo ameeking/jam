@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/category/a9c4a086-78ee-4ccc-bedc-4743c0f38831", {data:[{}],fetch:[],mutations:[]});

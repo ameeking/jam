@@ -38,8 +38,6 @@
 </template>
 
 <script>
-import { getCategory } from '~/api/category';
-import { getAllProductsByCategory } from '~/api/product';
 import CardProduct from "~/components/CardProduct/CardProduct"
 import CardPost from "~/components/CardPost/CardPost"
 import { Grid, GridCol } from "~/node_modules/flyweight"
@@ -69,11 +67,9 @@ export default {
       })
     },
   },
-  async asyncData({ $axios, store, route }) {
-    let category = await getCategory(route.params.id);
-    let products = await getAllProductsByCategory(4, route.params.id);
-
-    // console.log(products);
+  async asyncData({ $repository, store, route }) {
+    let category = await $repository.category.getCategory(route.params.id);
+    let products = await $repository.product.getAllProductsByCategory(4, route.params.id);
 
     store.commit('page/setTitle', category.title);
     store.commit('page/setBanner', `https://drupal-9-headless.lndo.site${category.field_image.uri.url}`);

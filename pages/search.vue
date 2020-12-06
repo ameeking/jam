@@ -36,12 +36,8 @@
 </template>
 
 <script>
-import { getAllProducts } from '~/api/product';
 import CardProduct from "../components/CardProduct/CardProduct"
 import { Grid, GridCol } from "~/node_modules/flyweight"
-
-import jsonapiParse from 'jsonapi-parse';
-import https from 'https'
 
 export default {
   name: "products",
@@ -109,8 +105,8 @@ export default {
     this.$store.commit('page/setTitle', 'Search');
     this.$store.commit('page/setBanner', '');
   },
-  async asyncData({ $axios, $config }) {
-    let response = await getAllProducts();
+  async asyncData({ $repository }) {
+    let response = await $repository.product.getAllProducts();
 
     return { products: response };
   },

@@ -8,35 +8,30 @@
 </template>
 
 <script>
-// import productQuery from '~/apollo/queries/product/product'
-
 export default {
   data() {
     return {
-      product: Object
+      product: {}
     }
   },
   computed: {
     imagePath() {
-      if (!this.product.image) {
+      if (!this.product.field_image) {
         return;
       }
 
-      return `http://localhost:1337${this.product.image.url}`;
+      return `https://drupal-9-headless.lndo.site${this.product.field_image.uri.url}`;
     }
   },
-  // apollo: {
-  //   product: {
-  //     prefetch: true,
-  //     query: productQuery,
-  //     variables () {
-  //       return { id: this.$route.params.id }
-  //     }
-  //   }
-  // },
-  created() {
-    this.$store.commit('page/setTitle', this.product.name);
-    this.$store.commit('page/setBanner', '');
+  async asyncData({ $repository, store, route }) {
+    let product = await $repository.product.getProduct(route.params.id);
+
+    store.commit('page/setTitle', product.title);
+    store.commit('page/setBanner', '');
+
+    return {
+      product: product
+    };
   },
 }
 </script>
