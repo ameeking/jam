@@ -20,7 +20,7 @@ export default {
   props: ['id', 'title', 'author', 'image'],
   computed: {
     imagePath() {
-      return `http://localhost:1337${this.image.url}`;
+      return `https://drupal-9-headless.lndo.site${this.image.uri.url}`;
     },
     link() {
       return `/post/${this.id}`;

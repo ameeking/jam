@@ -28,7 +28,7 @@
           <strong>Styles</strong>
           <ul class="u-list--style-none u-type--sm">
             <li v-for="category in categories" :key="category.id">
-              <nuxt-link class="u-type--base-lt" :to="`/category/${category.id}`">{{ category.name }}</nuxt-link>
+              <nuxt-link class="u-type--base-lt" :to="`/category/${category.id}`">{{ category.title }}</nuxt-link>
             </li>
           </ul>
         </GridCol>
@@ -62,22 +62,8 @@ export default {
       categories: []
     }
   },
-  // apollo: {
-  //   locations: {
-  //     prefetch: true,
-  //     query: locationsQuery
-  //   },
-  //   categories: {
-  //     prefetch: true,
-  //     query: categoriesQuery
-  //   }
-  // },
-  computed: {
-
+  async fetch () {
+    this.categories = await this.$repository.category.getAllCategories();
   }
 }
 </script>
-
-<style lang="scss">
-
-</style>

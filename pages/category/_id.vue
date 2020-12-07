@@ -22,18 +22,17 @@
       </GridCol>
     </Grid>
 
-    <!-- <h2>Posts</h2>
+    <h2>Posts</h2>
 
     <Grid>
-      <GridCol v-for="post in category.posts" :key="post.id" xs="7">
+      <GridCol v-for="post in posts" :key="post.id" xs="7">
         <CardPost 
           :title="post.title" 
           :id="post.id" 
-          :image="post.image" 
-          :author="post.author"
+          :image="post.field_image"
         />
       </GridCol>
-    </Grid> -->
+    </Grid>
   </div>
 </template>
 
@@ -45,12 +44,9 @@ import { Grid, GridCol } from "~/node_modules/flyweight"
 export default {
   data() {
     return {
-      category: {
-        image: {
-          url: ''
-        }
-      },
+      category: {},
       products: [],
+      posts: [],
       query: ''
     }
   },
@@ -70,13 +66,15 @@ export default {
   async asyncData({ $repository, store, route }) {
     let category = await $repository.category.getCategory(route.params.id);
     let products = await $repository.product.getAllProductsByCategory(4, route.params.id);
+    let posts = await $repository.post.getAllPostsByCategory(4, route.params.id);
 
     store.commit('page/setTitle', category.title);
     store.commit('page/setBanner', `https://drupal-9-headless.lndo.site${category.field_image.uri.url}`);
 
     return { 
       category: category,
-      products: products
+      products: products,
+      posts: posts
     };
   },
 }

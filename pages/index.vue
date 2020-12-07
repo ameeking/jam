@@ -6,9 +6,9 @@
       <Grid>
         <GridCol v-for="category in categories" :key="category.id" xs="2">
           <CardCategory 
-            :title="category.name" 
+            :title="category.title" 
             :id="category.id" 
-            :image="category.image"
+            :image="category.field_image"
           />
         </GridCol>
       </Grid>
@@ -22,8 +22,7 @@
           <CardPost 
             :title="post.title" 
             :id="post.id" 
-            :image="post.image" 
-            :author="post.author"
+            :image="post.field_image"
           />
         </GridCol>
       </Grid>
@@ -34,11 +33,11 @@
       <Grid>
         <GridCol v-for="product in products" :key="product.id" xs="3">
           <CardProduct
-            :name="product.name" 
+            :name="product.title" 
             :id="product.id" 
-            :image="product.image" 
-            :description="product.description"
-            :categories="product.categories"
+            :image="product.field_image" 
+            :description="product.body.summary"
+            :categories="product.field_category"
           />
         </GridCol>
       </Grid>
@@ -47,22 +46,19 @@
 </template>
 
 <script>
-// import productsQuery from "~/apollo/queries/product/products"
-// import postsQuery from '~/apollo/queries/post/posts'
-// import categoriesQuery from '~/apollo/queries/category/categories'
 import CardCategory from "../components/CardCategory/CardCategory"
 import CardPost from "../components/CardPost/CardPost"
 import CardProduct from "../components/CardProduct/CardProduct"
 import { Grid, GridCol } from "~/node_modules/flyweight"
 
 export default {
-  name: "home",
+  name: "index",
   components: {
-    'CardCategory': CardCategory,
-    'CardPost': CardPost,
-    'CardProduct': CardProduct,
-    'Grid': Grid,
-    'GridCol': GridCol
+    CardCategory,
+    CardPost,
+    CardProduct,
+    Grid,
+    GridCol
   },
   data() {
     return {
@@ -73,20 +69,6 @@ export default {
       query: ''
     }
   },
-  // apollo: {
-  //   categories: {
-  //     prefetch: true,
-  //     query: categoriesQuery
-  //   },
-  //   posts: {
-  //     prefetch: true,
-  //     query: postsQuery
-  //   },
-  //   products: {
-  //     prefetch: true,
-  //     query: productsQuery
-  //   }
-  // },
   methods: {
     categoryHref(id) {
       return `/category/${id}`;
@@ -102,6 +84,17 @@ export default {
   mounted() {
     this.$store.commit('page/setTitle', '');
     this.$store.commit('page/setBanner', 'https://cdn.pixabay.com/photo/2019/04/22/01/51/south-tyrol-4145438_1280.jpg');
+  },
+  async asyncData({ $repository }) {
+    let products = await $repository.product.getAllProducts(4);
+    let categories = await $repository.category.getAllCategories(6);
+    let posts = await $repository.post.getAllPosts(2);
+
+    return { 
+      categories: categories,
+      products: products,
+      posts: posts
+    };
   },
 }
 </script>

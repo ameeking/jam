@@ -1,32 +1,34 @@
 <template>
   <div class="l-container">
-    <ul>
-      <li v-for="item in categories" :key="item.id">
-        <nuxt-link :to="categoryHref(item.id)">
-          {{ item.name }}
-        </nuxt-link>
-      </li>
-    </ul>
+    <Grid>
+        <GridCol v-for="category in categories" :key="category.id" xs="2">
+          <CardCategory 
+            :title="category.title" 
+            :id="category.id" 
+            :image="category.field_image"
+          />
+        </GridCol>
+      </Grid>
   </div>
 </template>
 
 <script>
-// import categoriesQuery from '~/apollo/queries/category/categories'
+import CardCategory from "../components/CardCategory/CardCategory"
+import { Grid, GridCol } from "~/node_modules/flyweight"
 
 export default {
   name: "categories",
+  components: {
+    CardCategory,
+    Grid,
+    GridCol
+  },
   data() {
     return {
       categories: [],
       query: ''
     }
   },
-  // apollo: {
-  //   categories: {
-  //     prefetch: true,
-  //     query: categoriesQuery
-  //   }
-  // },
   methods: {
     categoryHref(id) {
       return `/category/${id}`;
@@ -42,6 +44,13 @@ export default {
   mounted() {
     this.$store.commit('page/setTitle', 'Categories');
     this.$store.commit('page/setBanner', '');
+  },
+  async asyncData({ $repository }) {
+    let categories = await $repository.category.getAllCategories(6);
+
+    return { 
+      categories: categories
+    };
   },
 }
 </script>
