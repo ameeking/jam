@@ -1,0 +1,1 @@
+window.__NUXT__={staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1607332493",layout:"default",error:null,state:{counter:0,page:{title:"North America",banner:""},product:{products:[]}},serverRendered:true,routePath:"\u002Flocation\u002F42cea667-e54a-43ec-8c30-024249565a81",config:{apiURL:"http:\u002F\u002Fdrupal-9-headless.lndo.site\u002Fjsonapi\u002Fnode\u002F"}};

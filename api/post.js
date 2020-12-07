@@ -49,5 +49,28 @@ export default (api) =>({
     }
   
     return api.get('post', params);
+  },
+
+  getAllPostsByLocation(limit = 4, locationId) {
+    const params = {
+      page: {
+        limit: limit
+      },
+      filter: {
+        status: {
+          value: 1
+        },
+        category: {
+          condition: {
+            path: 'field_location.id',
+            operator: '=',
+            value: locationId,
+          },
+        },
+      },
+      include: 'field_image,field_location',
+    }
+  
+    return api.get('post', params);
   }
 })

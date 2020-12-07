@@ -1,0 +1,1 @@
+window.__NUXT__={staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1607332493",layout:"default",error:null,state:{counter:0,page:{title:"Crossing the arctic",banner:""},product:{products:[]}},serverRendered:true,routePath:"\u002Fpost\u002F30179894-fa3c-4b38-b14d-7c7b01f719e9",config:{apiURL:"http:\u002F\u002Fdrupal-9-headless.lndo.site\u002Fjsonapi\u002Fnode\u002F"}};

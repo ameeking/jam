@@ -6,7 +6,7 @@ export default (api) =>({
           value: 1
         }
       },
-      include: 'field_image,field_category',
+      include: 'field_image,field_category,field_location',
     }
   
     return api.get(`product/${uuid}`, params);
@@ -22,7 +22,7 @@ export default (api) =>({
           value: 1
         },
       },
-      include: 'field_image,field_category',
+      include: 'field_image,field_category,field_location',
     }
   
     return api.get('product', params);
@@ -45,7 +45,30 @@ export default (api) =>({
           },
         },
       },
-      include: 'field_image,field_category',
+      include: 'field_image,field_category,field_location',
+    }
+  
+    return api.get('product', params);
+  },
+
+  getAllProductsByLocation(limit = 4, locationId) {
+    const params = {
+      page: {
+        limit: limit
+      },
+      filter: {
+        status: {
+          value: 1
+        },
+        location: {
+          condition: {
+            path: 'field_location.id',
+            operator: '=',
+            value: locationId,
+          },
+        },
+      },
+      include: 'field_image,field_category,field_location',
     }
   
     return api.get('product', params);

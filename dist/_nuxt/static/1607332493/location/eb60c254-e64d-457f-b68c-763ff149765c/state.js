@@ -1,0 +1,1 @@
+window.__NUXT__={staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1607332493",layout:"default",error:null,state:{counter:0,page:{title:"Oceania",banner:""},product:{products:[]}},serverRendered:true,routePath:"\u002Flocation\u002Feb60c254-e64d-457f-b68c-763ff149765c",config:{apiURL:"http:\u002F\u002Fdrupal-9-headless.lndo.site\u002Fjsonapi\u002Fnode\u002F"}};

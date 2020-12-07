@@ -20,7 +20,7 @@
           <strong>Destinations</strong>
           <ul class="u-list--style-none u-type--sm">
             <li v-for="location in locations" :key="location.id">
-              <span class="u-type--base-lt">{{ location.name }}</span>
+              <nuxt-link class="u-type--base-lt" :to="`/location/${location.id}`">{{ location.title }}</nuxt-link>
             </li>
           </ul>
         </GridCol>
@@ -42,9 +42,6 @@
 </template>
 
 <script>
-// import categoriesQuery from "~/apollo/queries/category/categories"
-// import locationsQuery from "~/apollo/queries/location/locations"
-
 import { Grid, GridCol, Button } from "~/node_modules/flyweight";
 import Logo from '../Logo/Logo';
 
@@ -64,6 +61,7 @@ export default {
   },
   async fetch () {
     this.categories = await this.$repository.category.getAllCategories();
+    this.locations = await this.$repository.location.getAllLocations();
   }
 }
 </script>

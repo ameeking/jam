@@ -15,7 +15,7 @@
         <strong class="u-mt--4">Location</strong>
         <div v-for="location in locations" :key="location.id">
           <input type="checkbox" :id="location.id" :value="location.id" v-model="locationsModel">
-          <label :for="location.id">{{ location.name }}</label>
+          <label :for="location.id">{{ location.title }}</label>
         </div>
       </GridCol>
       <GridCol xs="9">
@@ -75,7 +75,7 @@ export default {
       return this.products.filter(product => {
         return product.title.toLowerCase().includes(this.query.toLowerCase()) 
         && product.field_category.some(this.matchesCategoriesModel) 
-        // && product.locations.some(this.matchesLocationsModel)
+        && product.field_location.some(this.matchesLocationsModel)
       })
     },
     categories() {
@@ -92,11 +92,11 @@ export default {
     locations() {
       let locations = {};
 
-      // this.filteredProducts.forEach(function (product) {
-      //   product.locations.forEach(function (location) {
-      //     locations[location.id] = location;
-      //   })
-      // });
+      this.filteredProducts.forEach(function (product) {
+        product.field_location.forEach(function (location) {
+          locations[location.id] = location;
+        })
+      });
 
       return locations;
     }

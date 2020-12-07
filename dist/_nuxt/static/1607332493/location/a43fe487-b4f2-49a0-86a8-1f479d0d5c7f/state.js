@@ -1,0 +1,1 @@
+window.__NUXT__={staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1607332493",layout:"default",error:null,state:{counter:0,page:{title:"Middle East",banner:""},product:{products:[]}},serverRendered:true,routePath:"\u002Flocation\u002Fa43fe487-b4f2-49a0-86a8-1f479d0d5c7f",config:{apiURL:"http:\u002F\u002Fdrupal-9-headless.lndo.site\u002Fjsonapi\u002Fnode\u002F"}};

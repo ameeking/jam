@@ -1,0 +1,1 @@
+window.__NUXT__={staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1607332493",layout:"default",error:null,state:{counter:0,page:{title:"Hiking Mount Peel",banner:""},product:{products:[]}},serverRendered:true,routePath:"\u002Fpost\u002Feed588d8-cbd6-4a4e-9e04-b1bad02dd158",config:{apiURL:"http:\u002F\u002Fdrupal-9-headless.lndo.site\u002Fjsonapi\u002Fnode\u002F"}};
