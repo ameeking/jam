@@ -12,10 +12,11 @@ export default (api) =>({
     return api.get(`product/${uuid}`, params);
   },
 
-  getAllProducts(limit = 4) {
+  getAllProducts(limit = 4, page = 0) {
     const params = {
       page: {
-        limit: limit
+        limit: limit,
+        offset: page
       },
       filter: {
         status: {

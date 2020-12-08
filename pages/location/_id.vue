@@ -72,9 +72,9 @@ export default {
     store.commit('page/setBanner', '');
 
     return { 
-      location: location,
-      products: products,
-      posts: posts
+      location: location.data,
+      products: products.data,
+      posts: posts.data
     };
   },
 }

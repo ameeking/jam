@@ -30,7 +30,7 @@ export default {
     store.commit('page/setBanner', '');
 
     return {
-      product: product
+      product: product.data
     };
   },
 }

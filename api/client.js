@@ -8,6 +8,6 @@ export default ($axios, $config) => ({
     let url = `${$config.apiURL}${uri}${query}`;
     let response = await $axios.$get(url);
 
-    return jsonapiParse.parse(response).data;
+    return jsonapiParse.parse(response);
   },
 });

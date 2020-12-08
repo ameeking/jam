@@ -49,7 +49,7 @@ export default {
     let posts = await $repository.post.getAllPosts(12);
 
     return {
-      posts: posts
+      posts: posts.data
     };
   },
 }

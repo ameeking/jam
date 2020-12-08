@@ -30,6 +30,20 @@
             />
           </GridCol>
         </Grid>
+        <nuxt-link
+              :to="{
+                name: 'search',
+                query: { page: this.previousPage }
+              }">
+              Back
+        </nuxt-link>
+        <nuxt-link
+              :to="{
+                name: 'search',
+                query: { page: this.nextPage }
+              }">
+              Next
+        </nuxt-link>
       </GridCol>
     </Grid>
   </div>
@@ -51,7 +65,8 @@ export default {
       products: [],
       categoriesModel: [],
       locationsModel: [],
-      query: ''
+      query: '',
+      page: 0
     }
   },
   methods: {
@@ -71,6 +86,12 @@ export default {
     }
   },
   computed: {
+    nextPage() {
+      return this.page + 1;
+    },
+    previousPage() {
+      return this.page - 1;
+    },
     filteredProducts() {
       return this.products.filter(product => {
         return product.title.toLowerCase().includes(this.query.toLowerCase()) 
@@ -105,10 +126,20 @@ export default {
     this.$store.commit('page/setTitle', 'Search');
     this.$store.commit('page/setBanner', '');
   },
-  async asyncData({ $repository }) {
-    let response = await $repository.product.getAllProducts();
+  watch: {
+    '$route.query': '$fetch'
+  },
+  async fetch() {
+    if (this.$route.query.page) {
+      this.page = parseInt(this.$route.query.page);
+    }
+    else {
+      this.page = 0;
+    }
 
-    return { products: response };
+    let response = await this.$repository.product.getAllProducts(1, this.page);
+    
+    this.products = response.data;
   },
 }
 </script>

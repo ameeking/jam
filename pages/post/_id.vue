@@ -1,6 +1,6 @@
 <template>
   <div class="l-container">
-    <em>By {{post.uid.display_name }}</em>
+    <em>By {{ post.uid.display_name }}</em>
     <div>
       <img :src="imagePath" />
     </div>
@@ -31,7 +31,7 @@ export default {
     store.commit('page/setBanner', '');
 
     return {
-      post: post
+      post: post.data
     };
   },
 }

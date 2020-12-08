@@ -49,7 +49,7 @@ export default {
     let categories = await $repository.category.getAllCategories(6);
 
     return { 
-      categories: categories
+      categories: categories.data
     };
   },
 }

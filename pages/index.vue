@@ -91,9 +91,9 @@ export default {
     let posts = await $repository.post.getAllPosts(2);
 
     return { 
-      categories: categories,
-      products: products,
-      posts: posts
+      categories: categories.data,
+      products: products.data,
+      posts: posts.data
     };
   },
 }

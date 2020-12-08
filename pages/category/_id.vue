@@ -73,9 +73,9 @@ export default {
     store.commit('page/setBanner', `https://drupal-9-headless.lndo.site${category.field_image.uri.url}`);
 
     return { 
-      category: category,
-      products: products,
-      posts: posts
+      category: category.data,
+      products: products.data,
+      posts: posts.data
     };
   },
 }
