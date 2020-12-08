@@ -1,6 +1,6 @@
 <template>
   <div class="l-container">
-    <em>By {{post.author }}</em>
+    <em>By {{post.uid.display_name }}</em>
     <div>
       <img :src="imagePath" />
     </div>

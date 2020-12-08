@@ -90,6 +90,8 @@ export default {
     let categories = await $repository.category.getAllCategories(6);
     let posts = await $repository.post.getAllPosts(2);
 
+    console.log(posts);
+
     return { 
       categories: categories,
       products: products,

@@ -30,6 +30,7 @@
           :title="post.title" 
           :id="post.id" 
           :image="post.field_image"
+          :author="post.uid.display_name"
         />
       </GridCol>
     </Grid>

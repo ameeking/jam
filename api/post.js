@@ -6,7 +6,7 @@ export default (api) =>({
           value: 1
         }
       },
-      include: 'field_image,field_category',
+      include: 'field_image,field_category,uid',
     }
   
     return api.get(`post/${uuid}`, params);
@@ -22,7 +22,7 @@ export default (api) =>({
           value: 1
         },
       },
-      include: 'field_image,field_category',
+      include: 'field_image,field_category,uid',
     }
   
     return api.get('post', params);
@@ -45,7 +45,7 @@ export default (api) =>({
           },
         },
       },
-      include: 'field_image,field_category',
+      include: 'field_image,field_category,uid',
     }
   
     return api.get('post', params);
@@ -68,7 +68,7 @@ export default (api) =>({
           },
         },
       },
-      include: 'field_image,field_location',
+      include: 'field_image,field_location,uid',
     }
   
     return api.get('post', params);
