@@ -17,19 +17,30 @@
 import { Card, Chip, Button } from "~/node_modules/flyweight";
 
 export default {
-  name: "CardProduct",
+  name: "CardItinerary",
   components: {
     'Card': Card,
     'Chip': Chip,
     'Button': Button,
   },
-  props: ['id', 'name', 'description', 'image', 'categories'],
+  props: ['id', 'name', 'description', 'image', 'activities'],
   data() {
     return {
       border: true
     }
   },
   computed: {
+    categories() {
+      let categories = {};
+
+      this.activities.forEach(activity => {
+        activity.field_category.forEach(category => {
+          categories[category.id] = category;
+        })
+      })
+
+      return categories;
+    },
     imagePath() {
       return `http://drupal-9-headless.lndo.site${this.image.uri.url}`;
     },

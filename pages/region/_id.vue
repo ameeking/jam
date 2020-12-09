@@ -1,6 +1,6 @@
 <template>
   <div class="l-container">
-    <p>{{ location.body.value }}</p>
+    <p>{{ region.body.value }}</p>
 
     <h2>Activites</h2>
 
@@ -58,7 +58,7 @@ import { Grid, GridCol } from "~/node_modules/flyweight"
 export default {
   data() {
     return {
-      location: {},
+      country: {},
       activities: [],
       products: [],
       posts: [],
@@ -79,17 +79,19 @@ export default {
     // },
   },
   async asyncData({ $repository, store, route }) {
-    let location = await $repository.location.getLocation(route.params.id);
-    let activities = await $repository.activity.getAllActivitiesByLocation(4, route.params.id);
+    let region = await $repository.region.getRegion(route.params.id);
+    let activities = await $repository.activity.getAllActivitiesByRegion(4, route.params.id);
 
     // let products = await $repository.product.getAllProductsByLocation(4, route.params.id);
     // let posts = await $repository.post.getAllPostsByLocation(4, route.params.id);
 
-    store.commit('page/setTitle', location.data.title);
+    store.commit('page/setTitle', region.data.title);
     store.commit('page/setBanner', '');
 
+    console.log(activities.data);
+
     return { 
-      location: location.data,
+      region: region.data,
       activities: activities.data,
       // products: products.data,
       // posts: posts.data

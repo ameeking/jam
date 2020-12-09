@@ -6,7 +6,7 @@ export default (api) =>({
           value: 1
         }
       },
-      include: 'field_image,field_category,field_location',
+      include: 'field_image,field_category',
     }
   
     return api.get(`product/${uuid}`, params);
@@ -23,7 +23,7 @@ export default (api) =>({
           value: 1
         },
       },
-      include: 'field_image,field_category,field_location',
+      include: 'field_image,field_category',
     }
   
     return api.get('product', params);
@@ -46,7 +46,7 @@ export default (api) =>({
           },
         },
       },
-      include: 'field_image,field_category,field_location',
+      include: 'field_image,field_category',
     }
   
     return api.get('product', params);
@@ -69,7 +69,7 @@ export default (api) =>({
           },
         },
       },
-      include: 'field_image,field_category,field_location',
+      include: 'field_image,field_category',
     }
   
     return api.get('product', params);
