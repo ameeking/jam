@@ -5,11 +5,7 @@
       
       <Grid>
         <GridCol v-for="category in categories" :key="category.id" xs="2">
-          <CardCategory 
-            :title="category.title" 
-            :id="category.id" 
-            :image="category.field_image"
-          />
+          <CardCategory :category="category" />
         </GridCol>
       </Grid>
     </div>

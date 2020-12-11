@@ -4,21 +4,9 @@
 
     <h2>Itineraries</h2>
 
-    <form>
-      <input v-model="query" type="search" placeholder="Search...">
-    </form>
-
-    <br />
-
     <Grid>
       <GridCol v-for="itinerary in itineraries" :key="itinerary.id" xs="3">
-        <CardItinerary
-          :name="itinerary.title" 
-          :id="itinerary.id" 
-          :image="itinerary.field_image" 
-          :description="itinerary.body.value"
-          :activities="itinerary.field_activity"
-        />
+        <CardItinerary :itinerary="itinerary" />
       </GridCol>
     </Grid>
 
@@ -26,13 +14,7 @@
 
     <Grid>
       <GridCol v-for="activity in activities" :key="activity.id" xs="3">
-        <CardProduct
-          :name="activity.title" 
-          :id="activity.id" 
-          :image="activity.field_image" 
-          :description="activity.body.summary"
-          :categories="activity.field_category"
-        />
+        <CardActivity :activity="activity" />
       </GridCol>
     </Grid>
 
@@ -53,7 +35,7 @@
 
 <script>
 import CardItinerary from "~/components/CardItinerary/CardItinerary"
-import CardProduct from "~/components/CardProduct/CardProduct"
+import CardActivity from "~/components/CardActivity/CardActivity"
 import CardPost from "~/components/CardPost/CardPost"
 import { Grid, GridCol } from "~/node_modules/flyweight"
 
@@ -69,7 +51,7 @@ export default {
   },
   components: {
     CardItinerary,
-    CardProduct,
+    CardActivity,
     CardPost,
     Grid,
     GridCol
@@ -87,10 +69,7 @@ export default {
     let activities = await $repository.activity.getAllActivitiesByCategory(4, route.params.id);
     let posts = await $repository.post.getAllPostsByCategory(4, route.params.id);
 
-    console.log(activities);
-
-    // console.log(itineraries);
-    store.commit('page/setTitle', category.title);
+    store.commit('page/setTitle', category.data.title);
     store.commit('page/setBanner', `http://drupal-9-headless.lndo.site${category.data.field_image.uri.url}`);
 
     return { 

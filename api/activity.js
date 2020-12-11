@@ -75,7 +75,7 @@ export default (api) =>({
     return api.get('activity', params);
   },
 
-  getAllActivitiesByCountry(limit = 4, locationId) {
+  getAllActivitiesByCountry(limit = 4, countryId) {
     const params = {
       page: {
         limit: limit
@@ -88,7 +88,7 @@ export default (api) =>({
           condition: {
             path: 'field_location.field_country.id',
             operator: '=',
-            value: locationId,
+            value: countryId,
           },
         },
       },
@@ -98,7 +98,7 @@ export default (api) =>({
     return api.get('activity', params);
   },
 
-  getAllActivitiesByRegion(limit = 4, locationId) {
+  getAllActivitiesByRegion(limit = 4, regionId) {
     const params = {
       page: {
         limit: limit
@@ -111,7 +111,7 @@ export default (api) =>({
           condition: {
             path: 'field_location.field_country.field_region.id',
             operator: '=',
-            value: locationId,
+            value: regionId,
           },
         },
       },

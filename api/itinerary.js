@@ -6,7 +6,7 @@ export default (api) =>({
           value: 1
         }
       },
-      include: 'field_image,field_activity.field_category',
+      include: 'field_image,field_activity.field_category,field_activity.field_image,field_activity.field_location'
     }
   
     return api.get(`itinerary/${uuid}`, params);
@@ -63,19 +63,19 @@ export default (api) =>({
         },
         location: {
           condition: {
-            path: 'field_location.id',
+            path: 'field_activity.field_location.id',
             operator: '=',
             value: locationId,
           },
         },
       },
-      include: 'field_image,field_category,field_location',
+      include: 'field_image,field_activity.field_category,field_activity.field_location',
     }
   
     return api.get('itinerary', params);
   },
 
-  getAllItinerariesByCountry(limit = 4, locationId) {
+  getAllItinerariesByCountry(limit = 4, countryId) {
     const params = {
       page: {
         limit: limit
@@ -84,21 +84,21 @@ export default (api) =>({
         status: {
           value: 1
         },
-        location: {
+        country: {
           condition: {
-            path: 'field_location.field_country.id',
+            path: 'field_activity.field_location.field_country.id',
             operator: '=',
-            value: locationId,
+            value: countryId,
           },
         },
       },
-      include: 'field_image,field_category,field_location.field_country',
+      include: 'field_image,field_activity.field_category,field_activity.field_location,field_activity.field_location.field_country',
     }
   
     return api.get('itinerary', params);
   },
 
-  getAllItinerariesByRegion(limit = 4, locationId) {
+  getAllItinerariesByRegion(limit = 4, regionId) {
     const params = {
       page: {
         limit: limit
@@ -107,15 +107,15 @@ export default (api) =>({
         status: {
           value: 1
         },
-        location: {
-          condition: {
-            path: 'field_location.field_country.field_region.id',
-            operator: '=',
-            value: locationId,
-          },
-        },
+        // region: {
+        //   condition: {
+        //     path: 'field_activity.field_location.field_country.field_region.id',
+        //     operator: '=',
+        //     value: regionId,
+        //   },
+        // },
       },
-      include: 'field_image,field_category,field_location.field_country.field_region',
+      include: 'field_image,field_activity.field_category,field_activity.field_location.field_country.field_region',
     }
   
     return api.get('itinerary', params);

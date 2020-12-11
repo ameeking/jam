@@ -20,7 +20,7 @@ export default {
         return;
       }
 
-      return `https://drupal-9-headless.lndo.site${this.product.field_image.uri.url}`;
+      return `http://drupal-9-headless.lndo.site${this.product.field_image.uri.url}`;
     }
   },
   async asyncData({ $repository, store, route }) {

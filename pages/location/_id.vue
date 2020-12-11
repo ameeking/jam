@@ -1,40 +1,22 @@
 <template>
   <div class="l-container">
-    <p>{{ location.body.value }}</p>
+    <p>{{ description }}</p>
+
+    <h2>Itineraries</h2>
+
+    <Grid>
+      <GridCol v-for="itinerary in itineraries" :key="itinerary.id" xs="3">
+        <CardItinerary :itinerary="itinerary"/>
+      </GridCol>
+    </Grid>
 
     <h2>Activites</h2>
 
     <Grid>
       <GridCol v-for="activity in activities" :key="activity.id" xs="3">
-        <CardProduct
-          :name="activity.title" 
-          :id="activity.id" 
-          :image="activity.field_image" 
-          :description="activity.body.summary"
-          :categories="activity.field_category"
-        />
+        <CardActivity :activity="activity" />
       </GridCol>
     </Grid>
-
-    <h2>Itineraries</h2>
-
-    <form>
-      <input v-model="query" type="search" placeholder="Search...">
-    </form>
-
-    <br />
-
-    <!-- <Grid>
-      <GridCol v-for="product in filteredList" :key="product.id" xs="3">
-        <CardProduct
-          :name="product.title" 
-          :id="product.id" 
-          :image="product.field_image" 
-          :description="product.body.summary"
-          :categories="product.field_location"
-        />
-      </GridCol>
-    </Grid> -->
 
     <!-- <h2>Posts</h2>
 
@@ -51,36 +33,42 @@
 </template>
 
 <script>
-import CardProduct from "~/components/CardProduct/CardProduct"
+import CardActivity from "~/components/CardActivity/CardActivity"
+import CardItinerary from "~/components/CardItinerary/CardItinerary"
 import CardPost from "~/components/CardPost/CardPost"
 import { Grid, GridCol } from "~/node_modules/flyweight"
 
 export default {
+  components: {
+    CardItinerary,
+    CardActivity,
+    CardPost,
+    Grid,
+    GridCol
+  },
   data() {
     return {
       location: {},
+      itineraries: [],
       activities: [],
       products: [],
       posts: [],
       query: ''
     }
   },
-  components: {
-    'CardProduct': CardProduct,
-    'CardPost': CardPost,
-    'Grid': Grid,
-    'GridCol': GridCol
-  },
   computed: {
-    // filteredList() {
-    //   return this.products.filter(product => {
-    //     return product.title.toLowerCase().includes(this.query.toLowerCase())
-    //   })
-    // },
+    description() {
+      if (this.location && this.location.body && this.location.body.value) {
+        return this.location.body.value;
+      }
+      
+      return null;
+    },
   },
   async asyncData({ $repository, store, route }) {
     let location = await $repository.location.getLocation(route.params.id);
     let activities = await $repository.activity.getAllActivitiesByLocation(4, route.params.id);
+    let itineraries = await $repository.itinerary.getAllItinerariesByLocation(4, route.params.id);
 
     // let products = await $repository.product.getAllProductsByLocation(4, route.params.id);
     // let posts = await $repository.post.getAllPostsByLocation(4, route.params.id);
@@ -91,6 +79,7 @@ export default {
     return { 
       location: location.data,
       activities: activities.data,
+      itineraries: itineraries.data
       // products: products.data,
       // posts: posts.data
     };

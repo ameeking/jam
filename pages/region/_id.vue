@@ -2,39 +2,21 @@
   <div class="l-container">
     <p>{{ region.body.value }}</p>
 
+    <h2>Itineraries</h2>
+
+    <Grid>
+      <GridCol v-for="itinerary in itineraries" :key="itinerary.id" xs="3">
+        <CardItinerary :itinerary="itinerary"/>
+      </GridCol>
+    </Grid>
+
     <h2>Activites</h2>
 
     <Grid>
       <GridCol v-for="activity in activities" :key="activity.id" xs="3">
-        <CardProduct
-          :name="activity.title" 
-          :id="activity.id" 
-          :image="activity.field_image" 
-          :description="activity.body.summary"
-          :categories="activity.field_category"
-        />
+        <CardActivity :activity="activity" />
       </GridCol>
     </Grid>
-
-    <h2>Itineraries</h2>
-
-    <form>
-      <input v-model="query" type="search" placeholder="Search...">
-    </form>
-
-    <br />
-
-    <!-- <Grid>
-      <GridCol v-for="product in filteredList" :key="product.id" xs="3">
-        <CardProduct
-          :name="product.title" 
-          :id="product.id" 
-          :image="product.field_image" 
-          :description="product.body.summary"
-          :categories="product.field_location"
-        />
-      </GridCol>
-    </Grid> -->
 
     <!-- <h2>Posts</h2>
 
@@ -51,7 +33,8 @@
 </template>
 
 <script>
-import CardProduct from "~/components/CardProduct/CardProduct"
+import CardActivity from "~/components/CardActivity/CardActivity"
+import CardItinerary from "~/components/CardItinerary/CardItinerary"
 import CardPost from "~/components/CardPost/CardPost"
 import { Grid, GridCol } from "~/node_modules/flyweight"
 
@@ -66,34 +49,26 @@ export default {
     }
   },
   components: {
-    'CardProduct': CardProduct,
-    'CardPost': CardPost,
-    'Grid': Grid,
-    'GridCol': GridCol
-  },
-  computed: {
-    // filteredList() {
-    //   return this.products.filter(product => {
-    //     return product.title.toLowerCase().includes(this.query.toLowerCase())
-    //   })
-    // },
+    CardActivity,
+    CardItinerary,
+    CardPost,
+    Grid,
+    GridCol
   },
   async asyncData({ $repository, store, route }) {
     let region = await $repository.region.getRegion(route.params.id);
     let activities = await $repository.activity.getAllActivitiesByRegion(4, route.params.id);
+    let itineraries = await $repository.itinerary.getAllItinerariesByRegion(4, route.params.id);
 
-    // let products = await $repository.product.getAllProductsByLocation(4, route.params.id);
     // let posts = await $repository.post.getAllPostsByLocation(4, route.params.id);
 
     store.commit('page/setTitle', region.data.title);
     store.commit('page/setBanner', '');
 
-    console.log(activities.data);
-
     return { 
       region: region.data,
       activities: activities.data,
-      // products: products.data,
+      itineraries: itineraries.data,
       // posts: posts.data
     };
   },

@@ -2,39 +2,23 @@
   <div class="l-container">
     <p>{{ country.body.value }}</p>
 
-    <h2>Activites</h2>
-
+    <h2>Itineraries</h2>
+    
     <Grid>
-      <GridCol v-for="activity in activities" :key="activity.id" xs="3">
-        <CardProduct
-          :name="activity.title" 
-          :id="activity.id" 
-          :image="activity.field_image" 
-          :description="activity.body.summary"
-          :categories="activity.field_category"
+      <GridCol v-for="itinerary in itineraries" :key="itinerary.id" xs="3">
+        <CardItinerary
+          :itinerary="itinerary"
         />
       </GridCol>
     </Grid>
 
-    <h2>Itineraries</h2>
+    <h2>Activites</h2>
 
-    <form>
-      <input v-model="query" type="search" placeholder="Search...">
-    </form>
-
-    <br />
-
-    <!-- <Grid>
-      <GridCol v-for="product in filteredList" :key="product.id" xs="3">
-        <CardProduct
-          :name="product.title" 
-          :id="product.id" 
-          :image="product.field_image" 
-          :description="product.body.summary"
-          :categories="product.field_location"
-        />
+    <Grid>
+      <GridCol v-for="activity in activities" :key="activity.id" xs="3">
+        <CardActivity :activity="activity" />
       </GridCol>
-    </Grid> -->
+    </Grid>
 
     <!-- <h2>Posts</h2>
 
@@ -51,25 +35,28 @@
 </template>
 
 <script>
-import CardProduct from "~/components/CardProduct/CardProduct"
+import CardItinerary from "~/components/CardItinerary/CardItinerary"
+import CardActivity from "~/components/CardActivity/CardActivity"
 import CardPost from "~/components/CardPost/CardPost"
 import { Grid, GridCol } from "~/node_modules/flyweight"
 
 export default {
   data() {
     return {
-      location: {},
+      country: {},
       activities: [],
+      itineraries: [],
       products: [],
       posts: [],
       query: ''
     }
   },
   components: {
-    'CardProduct': CardProduct,
-    'CardPost': CardPost,
-    'Grid': Grid,
-    'GridCol': GridCol
+    CardItinerary,
+    CardActivity,
+    CardPost,
+    Grid,
+    GridCol
   },
   computed: {
     // filteredList() {
@@ -81,6 +68,7 @@ export default {
   async asyncData({ $repository, store, route }) {
     let country = await $repository.country.getCountry(route.params.id);
     let activities = await $repository.activity.getAllActivitiesByCountry(4, route.params.id);
+    let itineraries = await $repository.itinerary.getAllItinerariesByCountry(4, route.params.id);
 
     // let products = await $repository.product.getAllProductsByLocation(4, route.params.id);
     // let posts = await $repository.post.getAllPostsByLocation(4, route.params.id);
@@ -88,11 +76,10 @@ export default {
     store.commit('page/setTitle', country.data.title);
     store.commit('page/setBanner', '');
 
-    console.log(activities.data);
-
     return { 
       country: country.data,
       activities: activities.data,
+      itineraries: itineraries.data
       // products: products.data,
       // posts: posts.data
     };
