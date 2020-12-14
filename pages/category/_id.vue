@@ -1,6 +1,6 @@
 <template>
   <div class="l-container">
-    <p>{{ category.body.value }}</p>
+    <p>{{ body }}</p>
 
     <h2>Itineraries</h2>
 
@@ -22,12 +22,7 @@
 
     <Grid>
       <GridCol v-for="post in posts" :key="post.id" xs="7">
-        <CardPost 
-          :title="post.title" 
-          :id="post.id" 
-          :image="post.field_image"
-          :author="post.uid.display_name"
-        />
+        <CardPost :post="post" />
       </GridCol>
     </Grid>
   </div>
@@ -61,6 +56,13 @@ export default {
       return this.itinerary.filter(itinerary => {
         return itinerary.title.toLowerCase().includes(this.query.toLowerCase())
       })
+    },
+    body() {
+      if (this.category.body && this.category.body.value) {
+        return this.category.body.value;
+      }
+      
+      return null;
     },
   },
   async asyncData({ $repository, store, route }) {

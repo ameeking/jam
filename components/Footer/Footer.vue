@@ -22,14 +22,6 @@
           </ul>
         </GridCol>
         <GridCol xs="2">
-          <strong>Countries</strong>
-          <ul class="u-list--style-none u-type--sm">
-            <li v-for="country in countries.data" :key="country.id">
-              <nuxt-link class="u-type--base-lt" :to="`/country/${country.id}`">{{ country.title }}</nuxt-link>
-            </li>
-          </ul>
-        </GridCol>
-        <GridCol xs="2">
           <strong>Locations</strong>
           <ul class="u-list--style-none u-type--sm">
             <li v-for="location in locations.data" :key="location.id">
@@ -77,7 +69,6 @@ export default {
     return {
       locations: {},
       regions: {},
-      countries: {},
       categories: {}
     }
   },
@@ -85,7 +76,6 @@ export default {
     this.categories = await this.$repository.category.getAllCategories();
     this.locations = await this.$repository.location.getAllLocations(10);
     this.regions = await this.$repository.region.getAllRegions(10);
-    this.countries = await this.$repository.country.getAllCountries(10);
   }
 }
 </script>

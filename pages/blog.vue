@@ -6,12 +6,7 @@
 
     <Grid class="u-mt--4">
       <GridCol v-for="post in posts" :key="post.id" xs="7">
-        <CardPost 
-          :title="post.title" 
-          :id="post.id" 
-          :image="post.field_image"
-          :author="post.uid.display_name"
-        />
+        <CardPost :post="post" />
       </GridCol>
     </Grid>
   </div>

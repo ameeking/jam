@@ -75,29 +75,6 @@ export default (api) =>({
     return api.get('activity', params);
   },
 
-  getAllActivitiesByCountry(limit = 4, countryId) {
-    const params = {
-      page: {
-        limit: limit
-      },
-      filter: {
-        status: {
-          value: 1
-        },
-        location: {
-          condition: {
-            path: 'field_location.field_country.id',
-            operator: '=',
-            value: countryId,
-          },
-        },
-      },
-      include: 'field_image,field_category,field_location.field_country',
-    }
-  
-    return api.get('activity', params);
-  },
-
   getAllActivitiesByRegion(limit = 4, regionId) {
     const params = {
       page: {
@@ -109,13 +86,13 @@ export default (api) =>({
         },
         location: {
           condition: {
-            path: 'field_location.field_country.field_region.id',
+            path: 'field_location.field_region.id',
             operator: '=',
             value: regionId,
           },
         },
       },
-      include: 'field_image,field_category,field_location.field_country.field_region',
+      include: 'field_image,field_category,field_location.field_region',
     }
   
     return api.get('activity', params);

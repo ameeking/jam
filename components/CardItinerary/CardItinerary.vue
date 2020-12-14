@@ -39,13 +39,18 @@ export default {
       return this.itinerary.title;
     },
     description() {
-      return this.itinerary.body.value;
+      if (this.itinerary.body && this.itinerary.value) {
+        return this.itinerary.body.value;
+      }
+
+      return null;
+      
     },
     link() {
       return `/itinerary/${this.itinerary.id}`;
     },
     imagePath() {
-      if (this.itinerary.field_image) {
+      if (this.itinerary.field_image && this.itinerary.field_image.uri) {
         return `http://drupal-9-headless.lndo.site${this.itinerary.field_image.uri.url}`;
       }
 

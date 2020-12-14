@@ -39,10 +39,14 @@ export default {
       return this.activity.title;
     },
     description() {
-      return this.activity.body.value;
+      if (this.activity.body && this.activity.value) {
+        return this.activity.body.value;
+      }
+
+      return null;
     },
     imagePath() {
-      if (this.activity.field_image) {
+      if (this.activity.field_image && this.activity.field_image.uri) {
         return `http://drupal-9-headless.lndo.site${this.activity.field_image.uri.url}`;
       }
 

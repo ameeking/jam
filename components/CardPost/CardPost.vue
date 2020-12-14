@@ -3,7 +3,7 @@
     <template slot="content">
       <div class="u-type--sm">{{ author }}</div>
       <h3 class="u-mb--0 u-mt--1">{{ title }}</h3>
-      <p>This is some example post content that is medium long...</p>
+      <p>{{ body }}</p>
     </template>
   </Card>
 </template>
@@ -17,13 +17,35 @@ export default {
     'Card': Card,
     'Button': Button,
   },
-  props: ['id', 'title', 'author', 'image'],
+  props: {
+    post: {
+      type: Object,
+      required: true
+    },
+  },
   computed: {
+    title() {
+      return this.post.title;
+    },
+    body() {
+      if (this.post.body && this.post.body.value) {
+        return this.post.body.value;
+      }
+
+      return null;
+    },
     imagePath() {
-      return `http://drupal-9-headless.lndo.site${this.image.uri.url}`;
+      if (this.post.field_image && this.post.field_image.uri) {
+        return `http://drupal-9-headless.lndo.site${this.post.field_image.uri.url}`;
+      }
+      
+      return null;
     },
     link() {
-      return `/post/${this.id}`;
+      return `/post/${this.post.id}`;
+    },
+    author() {
+      this.post.uid.display_name
     }
   }
 };

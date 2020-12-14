@@ -1,6 +1,6 @@
 <template>
   <div class="l-container">
-    <p>{{ description }}</p>
+    <p>{{ body }}</p>
 
     <h2>Itineraries</h2>
 
@@ -18,17 +18,13 @@
       </GridCol>
     </Grid>
 
-    <!-- <h2>Posts</h2>
+    <h2>Posts</h2>
 
     <Grid>
       <GridCol v-for="post in posts" :key="post.id" xs="7">
-        <CardPost 
-          :title="post.title" 
-          :id="post.id" 
-          :image="post.field_image"
-        />
+        <CardPost :post="post" />
       </GridCol>
-    </Grid> -->
+    </Grid>
   </div>
 </template>
 
@@ -57,7 +53,7 @@ export default {
     }
   },
   computed: {
-    description() {
+    body() {
       if (this.location && this.location.body && this.location.body.value) {
         return this.location.body.value;
       }
@@ -69,9 +65,7 @@ export default {
     let location = await $repository.location.getLocation(route.params.id);
     let activities = await $repository.activity.getAllActivitiesByLocation(4, route.params.id);
     let itineraries = await $repository.itinerary.getAllItinerariesByLocation(4, route.params.id);
-
-    // let products = await $repository.product.getAllProductsByLocation(4, route.params.id);
-    // let posts = await $repository.post.getAllPostsByLocation(4, route.params.id);
+    let posts = await $repository.post.getAllPostsByLocation(4, route.params.id);
 
     store.commit('page/setTitle', location.data.title);
     store.commit('page/setBanner', '');
@@ -79,9 +73,8 @@ export default {
     return { 
       location: location.data,
       activities: activities.data,
-      itineraries: itineraries.data
-      // products: products.data,
-      // posts: posts.data
+      itineraries: itineraries.data,
+      posts: posts.data
     };
   },
 }

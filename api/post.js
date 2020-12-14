@@ -72,5 +72,28 @@ export default (api) =>({
     }
   
     return api.get('post', params);
+  },
+
+  getAllPostsByRegion(limit = 4, regionId) {
+    const params = {
+      page: {
+        limit: limit
+      },
+      filter: {
+        status: {
+          value: 1
+        },
+        category: {
+          condition: {
+            path: 'field_location.field_region.id',
+            operator: '=',
+            value: regionId,
+          },
+        },
+      },
+      include: 'field_image,field_location,field_location.field_region,uid',
+    }
+  
+    return api.get('post', params);
   }
 })

@@ -4,7 +4,7 @@
       {{ category.title }}
     </Chip>
 
-    <p>{{ itinerary.body.value }}</p>
+    <p>{{ body }}</p>
 
     <Grid>
       <GridCol xs="12" v-for="(activity, index) in itinerary.field_activity" :key="activity.id">
@@ -47,6 +47,13 @@ export default {
 
       return categories;
     },
+    body() {
+      if (this.itinerary.body && this.itinerary.body.value) {
+        return this.itinerary.body.value
+      }
+
+      return null;
+    }
   },
   methods: {
     activityImage(activity) {

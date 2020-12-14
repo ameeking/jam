@@ -15,28 +15,18 @@
 
       <Grid>
         <GridCol v-for="post in posts" :key="post.id" xs="7">
-          <CardPost 
-            :title="post.title" 
-            :id="post.id" 
-            :image="post.field_image"
-          />
+          <CardPost :post="post" />
         </GridCol>
       </Grid>
     </div>
 
     <div class="l-container">
-      <h2 class="u-mt--8">Popular adventures</h2>
+      <h2 class="u-mt--8">Popular Itineraries</h2>
       <Grid>
-        <GridCol v-for="product in products" :key="product.id" xs="3">
-          <CardProduct
-            :name="product.title" 
-            :id="product.id" 
-            :image="product.field_image" 
-            :description="product.body.summary"
-            :categories="product.field_category"
-          />
+        <GridCol v-for="itinerary in itineraries" :key="itinerary.id" xs="3">
+          <CardItinerary :itinerary="itinerary"/>
         </GridCol>
-      </Grid>
+    </Grid>
     </div>
   </div>
 </template>
@@ -44,7 +34,7 @@
 <script>
 import CardCategory from "../components/CardCategory/CardCategory"
 import CardPost from "../components/CardPost/CardPost"
-import CardProduct from "../components/CardProduct/CardProduct"
+import CardItinerary from "../components/CardItinerary/CardItinerary"
 import { Grid, GridCol } from "~/node_modules/flyweight"
 
 export default {
@@ -52,7 +42,7 @@ export default {
   components: {
     CardCategory,
     CardPost,
-    CardProduct,
+    CardItinerary,
     Grid,
     GridCol
   },
@@ -61,7 +51,7 @@ export default {
       type: 'right',
       categories: [],
       posts: [],
-      products: [],
+      itineraries: [],
       query: ''
     }
   },
@@ -82,13 +72,13 @@ export default {
     this.$store.commit('page/setBanner', 'https://cdn.pixabay.com/photo/2019/04/22/01/51/south-tyrol-4145438_1280.jpg');
   },
   async asyncData({ $repository }) {
-    let products = await $repository.product.getAllProducts(4);
+    let itineraries = await $repository.itinerary.getAllItineraries(4);
     let categories = await $repository.category.getAllCategories(6);
     let posts = await $repository.post.getAllPosts(2);
 
     return { 
       categories: categories.data,
-      products: products.data,
+      itineraries: itineraries.data,
       posts: posts.data
     };
   },

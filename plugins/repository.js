@@ -6,7 +6,6 @@ import category from '../api/category.js';
 import post from '../api/post.js';
 import location from '../api/location.js';
 import region from '../api/region.js';
-import country from '../api/country.js';
 
 export default (ctx, inject) => {
   const api = client(ctx.$axios, ctx.$config);
@@ -18,8 +17,7 @@ export default (ctx, inject) => {
     category: category(api),
     post: post(api),
     location: location(api),
-    region: region(api),
-    country: country(api)
+    region: region(api)
   }
 
   inject('repository', repositories)
