@@ -1,1 +1,0 @@
-window.__NUXT__={staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1607397409",layout:"default",error:null,state:{counter:0,page:{title:void 0,banner:""},product:{products:[]}},serverRendered:true,routePath:"\u002Fproduct\u002F24d5ab42-7abe-4b19-810d-204210ec616c",config:{apiURL:"http:\u002F\u002Fdrupal-9-headless.lndo.site\u002Fjsonapi\u002Fnode\u002F"}};
