@@ -30,13 +30,6 @@ export default {
       return `/category/${id}`;
     }
   },
-  computed: {
-    filteredList() {
-      return this.categories.filter(product => {
-        return categories.name.toLowerCase().includes(this.query.toLowerCase())
-      })
-    },
-  },
   mounted() {
     this.$store.commit('page/setTitle', 'Categories');
     this.$store.commit('page/setBanner', '');

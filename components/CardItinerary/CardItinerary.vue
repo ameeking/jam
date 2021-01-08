@@ -51,7 +51,7 @@ export default {
     },
     imagePath() {
       if (this.itinerary.field_image && this.itinerary.field_image.uri) {
-        return `http://drupal-9-headless.lndo.site${this.itinerary.field_image.uri.url}`;
+        return `${this.$config.baseURL}${this.itinerary.field_image.uri.url}`;
       }
 
       return null;

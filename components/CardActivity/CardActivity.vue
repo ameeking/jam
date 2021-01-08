@@ -47,7 +47,7 @@ export default {
     },
     imagePath() {
       if (this.activity.field_image && this.activity.field_image.uri) {
-        return `http://drupal-9-headless.lndo.site${this.activity.field_image.uri.url}`;
+        return `${this.$config.baseURL}${this.activity.field_image.uri.url}`;
       }
 
       return null;

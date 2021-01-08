@@ -2,7 +2,7 @@
   <div class="l-container">
     <p>{{ body }}</p>
 
-    <h2>Itineraries</h2>
+    <h2 class="u-mt--10">Itineraries</h2>
 
     <Grid>
       <GridCol v-for="itinerary in itineraries" :key="itinerary.id" xs="3">
@@ -10,7 +10,7 @@
       </GridCol>
     </Grid>
 
-    <h2>Activites</h2>
+    <h2 class="u-mt--10">Activites</h2>
 
     <Grid>
       <GridCol v-for="activity in activities" :key="activity.id" xs="3">
@@ -18,7 +18,7 @@
       </GridCol>
     </Grid>
 
-    <h2>Posts</h2>
+    <h2 class="u-mt--10">Posts</h2>
 
     <Grid>
       <GridCol v-for="post in posts" :key="post.id" xs="7">
@@ -52,11 +52,6 @@ export default {
     GridCol
   },
   computed: {
-    filteredList() {
-      return this.itinerary.filter(itinerary => {
-        return itinerary.title.toLowerCase().includes(this.query.toLowerCase())
-      })
-    },
     body() {
       if (this.category.body && this.category.body.value) {
         return this.category.body.value;

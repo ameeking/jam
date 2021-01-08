@@ -27,7 +27,7 @@ export default {
     },
     imagePath() {
       if (this.category.field_image) {
-        return `http://drupal-9-headless.lndo.site${this.category.field_image.uri.url}`;
+        return `${this.$config.baseURL}${this.category.field_image.uri.url}`;
       }
       
       return null;

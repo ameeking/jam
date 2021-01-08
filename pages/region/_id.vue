@@ -3,19 +3,13 @@
 
     <div class="l-container">
       <p>{{ body }}</p>
+
+      <h2 class="u-mt--10">Locations</h2>
     </div>
 
-    <div class="l-container u-mt--8 u-pt--5 u-pb--8 u-color--gray-ltr" v-if="locations.length > 0">
-      <h2>Locations</h2>
+    <LocationMap :locations="locations" />
 
-      <Grid>
-        <GridCol v-for="location in locations" :key="location.id" xs="2">
-          <CardLocation :location="location" />
-        </GridCol>
-      </Grid>
-    </div>
-
-    <div class="l-container" v-if="itineraries.length > 0">
+    <div class="l-container u-mt--10" v-if="itineraries.length > 0">
       <h2>Itineraries</h2>
 
       <Grid>
@@ -25,7 +19,7 @@
       </Grid>
     </div>
 
-    <div class="l-container" v-if="activities.length > 0">
+    <div class="l-container u-mt--10" v-if="activities.length > 0">
       <h2>Activites</h2>
 
       <Grid>
@@ -50,6 +44,7 @@
 </template>
 
 <script>
+import LocationMap from "~/components/LocationMap/LocationMap"
 import CardActivity from "~/components/CardActivity/CardActivity"
 import CardItinerary from "~/components/CardItinerary/CardItinerary"
 import CardPost from "~/components/CardPost/CardPost"
@@ -66,6 +61,7 @@ export default {
     }
   },
   components: {
+    LocationMap,
     CardActivity,
     CardItinerary,
     CardPost,

@@ -1,5 +1,4 @@
 import client from '~/api/client.js'
-import product from '~/api/product.js'
 import itinerary from '~/api/itinerary.js'
 import activity from '../api/activity.js';
 import category from '../api/category.js';
@@ -11,7 +10,6 @@ export default (ctx, inject) => {
   const api = client(ctx.$axios, ctx.$config);
 
   const repositories = {
-    product: product(api),
     itinerary: itinerary(api),
     activity: activity(api),
     category: category(api),

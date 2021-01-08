@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     imagePath() {
-      return `http://drupal-9-headless.lndo.site${this.image.uri.url}`;
+      return `${this.$config.baseURL}${this.image.uri.url}`;
     },
     link() {
       return `/product/${this.id}`;

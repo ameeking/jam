@@ -60,13 +60,6 @@ export default {
       return `/category/${id}`;
     }
   },
-  computed: {
-    filteredList() {
-      return this.categories.filter(product => {
-        return categories.name.toLowerCase().includes(this.query.toLowerCase())
-      })
-    },
-  },
   mounted() {
     this.$store.commit('page/setTitle', '');
     this.$store.commit('page/setBanner', 'https://cdn.pixabay.com/photo/2019/04/22/01/51/south-tyrol-4145438_1280.jpg');

@@ -38,10 +38,8 @@ export default {
       return null;
     },
     imagePath() {
-      console.log(this.location);
-
       if (this.location.field_image && this.location.field_image.uri) {
-        return `http://drupal-9-headless.lndo.site${this.location.field_image.uri.url}`;
+        return `${this.$config.baseURL}${this.location.field_image.uri.url}`;
       }
 
       return null;

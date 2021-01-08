@@ -38,14 +38,14 @@
           </ul>
         </GridCol>
       </Grid>
-      <hr />
+      <hr class="u-mb--4" />
       <Grid>
         <GridCol xs="3">
           <Logo />
         </GridCol>
         <GridCol xs="9">
           <p class="u-type--base-lt u-type--sm">
-            © 2020 Jam. All rights reserved. Feel free to do whatever you like to this.
+            © 2020 Jam. Feel free to do whatever you like to this.
           </p>
         </GridCol>
       </Grid>

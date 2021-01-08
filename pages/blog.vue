@@ -1,9 +1,5 @@
 <template>
   <div class="l-container">
-    <form>
-      <input v-model="query" type="search" placeholder="Search...">
-    </form>
-
     <Grid class="u-mt--4">
       <GridCol v-for="post in posts" :key="post.id" xs="7">
         <CardPost :post="post" />
@@ -28,13 +24,6 @@ export default {
       posts: [],
       query: ''
     }
-  },
-  computed: {
-    filteredList() {
-      return this.posts.filter(post => {
-        return post.title.toLowerCase().includes(this.query.toLowerCase())
-      })
-    },
   },
   mounted() {
     this.$store.commit('page/setTitle', 'Blog');

@@ -13,6 +13,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.3",
     "flyweight": "ameeking/flyweight.git#main",
+    "google-maps-api-loader": "^1.1.1",
     "jsonapi-parse": "^2.0.0",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0",

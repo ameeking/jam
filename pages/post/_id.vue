@@ -21,7 +21,7 @@ export default {
         return;
       }
 
-      return `https://drupal-9-headless.lndo.site${this.post.field_image.uri.url}`;
+      return `${this.$config.baseURL}${this.post.field_image.uri.url}`;
     }
   },
   async asyncData({ $repository, store, route }) {

@@ -30,11 +30,8 @@ export default {
   display: inline-block;
   width: 215px;
   height: 43px;
-  font-weight: bold;
-  font-size: 2rem;
-  color: #ffb703;
-  text-shadow: 3px 0 #023047;
   position: relative;
+  overflow: hidden;
 }
 
 .logo__svg {

@@ -1,7 +1,9 @@
 export default {
     target: 'static',
     publicRuntimeConfig: {
-      apiURL: process.env.API_URL
+      baseURL: process.env.BASE_URL,
+      apiURL: process.env.API_URL,
+      googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
     },
     plugins: [
       '~/plugins/repository.js',

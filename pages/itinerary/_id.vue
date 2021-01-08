@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     activityImage(activity) {
-      return `http://drupal-9-headless.lndo.site${activity.field_image.uri.url}`
+      return `${this.$config.baseURL}${activity.field_image.uri.url}`
     },
     categoryHref(id) {
       return `/category/${id}`;
