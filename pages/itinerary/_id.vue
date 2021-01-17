@@ -8,7 +8,7 @@
 
     <Grid>
       <GridCol xs="12" v-for="(activity, index) in itinerary.field_activity" :key="activity.id">
-        <h2>Day {{ index + 1 }} - {{ activity.field_location.title }}</h2>
+        <h2>Day {{ index + 1 }} - {{ activity.field_destination.title }}</h2>
         <Card :image="activityImage(activity)" type="left" scale="16:9">
           <template slot="content">
             <h3 class="u-mb--0 u-mt--1">{{ activity.title }}</h3>

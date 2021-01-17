@@ -95,8 +95,8 @@ export default {
         markers.push({
           id: location.id,
           position: {
-            lat: location.field_geolocation.lat,
-            lng: location.field_geolocation.lng
+            lat: location.field_location.lat,
+            lng: location.field_location.lng
           },
           icon: icon
         })

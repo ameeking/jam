@@ -1,10 +1,26 @@
+import path from 'path'
+import fs from 'fs'
+
+let server = {};
+
+if (process.env.NODE_ENV !== 'production') {
+  server = {
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'server.crt'))
+    }
+  }
+}
+
 export default {
     target: 'static',
     publicRuntimeConfig: {
       baseURL: process.env.BASE_URL,
       apiURL: process.env.API_URL,
+      apiPath: process.env.API_PATH,
       googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
     },
+    server: server,
     plugins: [
       '~/plugins/repository.js',
     ],
@@ -27,6 +43,13 @@ export default {
       'assets/scss/main.scss'
     ],
     modules: [
-      '@nuxtjs/axios'
-    ]
+      '@nuxtjs/axios',
+      '@nuxtjs/proxy',
+    ],
+    axios: {
+      proxy: true
+    },
+    proxy: {
+      '/jsonapi/node/': process.env.API_URL
+    }
 }

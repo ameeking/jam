@@ -6,7 +6,7 @@ export default (api) =>({
           value: 1
         }
       },
-      include: 'field_image',
+      include: 'field_hero_image',
     }
   
     return api.get(`category/${uuid}`, params);
@@ -22,7 +22,7 @@ export default (api) =>({
           value: 1
         },
       },
-      include: 'field_image',
+      include: 'field_hero_image',
     }
   
     return api.get('category', params);

@@ -2,14 +2,6 @@
   <div class="l-container">
     <p>{{ body }}</p>
 
-    <h2>Itineraries</h2>
-
-    <Grid>
-      <GridCol v-for="itinerary in itineraries" :key="itinerary.id" xs="3">
-        <CardItinerary :itinerary="itinerary"/>
-      </GridCol>
-    </Grid>
-
     <h2>Activites</h2>
 
     <Grid>
@@ -64,16 +56,14 @@ export default {
   async asyncData({ $repository, store, route }) {
     let location = await $repository.location.getLocation(route.params.id);
     let activities = await $repository.activity.getAllActivitiesByLocation(4, route.params.id);
-    let itineraries = await $repository.itinerary.getAllItinerariesByLocation(4, route.params.id);
     let posts = await $repository.post.getAllPostsByLocation(4, route.params.id);
 
-    store.commit('page/setTitle', location.data.title);
+    store.commit('page/setTitle', location.data.title); 
     store.commit('page/setBanner', '');
 
     return { 
       location: location.data,
       activities: activities.data,
-      itineraries: itineraries.data,
       posts: posts.data
     };
   },

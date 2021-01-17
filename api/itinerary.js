@@ -6,7 +6,7 @@ export default (api) =>({
           value: 1
         }
       },
-      include: 'field_image,field_activity.field_category,field_activity.field_image,field_activity.field_location'
+      include: 'field_hero_image,field_activity.field_category,field_activity.field_hero_image,field_activity.field_destination'
     }
   
     return api.get(`itinerary/${uuid}`, params);
@@ -23,7 +23,7 @@ export default (api) =>({
           value: 1
         },
       },
-      include: 'field_image,field_activity.field_category',
+      include: 'field_hero_image,field_activity.field_category',
     }
   
     return api.get('itinerary', params);
@@ -46,7 +46,7 @@ export default (api) =>({
           },
         },
       },
-      include: 'field_image,field_activity.field_category',
+      include: 'field_hero_image,field_activity.field_category',
     }
   
     return api.get('itinerary', params);
@@ -63,13 +63,13 @@ export default (api) =>({
         },
         location: {
           condition: {
-            path: 'field_activity.field_location.id',
+            path: 'field_activity.field_destination.id',
             operator: '=',
             value: locationId,
           },
         },
       },
-      include: 'field_image,field_activity.field_category,field_activity.field_location',
+      include: 'field_hero_image,field_activity.field_category,field_activity.field_destination',
     }
   
     return api.get('itinerary', params);
@@ -86,13 +86,13 @@ export default (api) =>({
         },
         region: {
           condition: {
-            path: 'field_activity.field_location.field_region.id',
+            path: 'field_activity.field_destination.field_region.id',
             operator: '=',
             value: regionId,
           },
         },
       },
-      include: 'field_image,field_activity.field_category,field_activity.field_location.field_region',
+      include: 'field_hero_image,field_activity.field_category,field_activity.field_destination.field_region',
     }
   
     return api.get('itinerary', params);

@@ -1,12 +1,21 @@
 import jsonapiParse from 'jsonapi-parse';
+import https from 'https';
 import qs from 'qs';
 
 export default ($axios, $config) => ({
-  
   async get(uri, params = null) {
+    let agent = {}
+
+    if (process.env.NODE_ENV === 'development') {
+      agent = new https.Agent({  
+        rejectUnauthorized: false
+      });
+    }
+
     let query = params ? '?' + qs.stringify(params, { indices: false }) : '';
-    let url = `${$config.apiURL}${uri}${query}`;
-    let response = await $axios.$get(url);
+    let url = `/jsonapi/node/${uri}${query}`;
+
+    let response = await $axios.$get(url, { httpsAgent: agent });
 
     return jsonapiParse.parse(response);
   },

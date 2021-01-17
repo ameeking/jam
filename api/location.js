@@ -8,7 +8,7 @@ export default (api) =>({
       },
     }
   
-    return api.get(`location/${uuid}`, params);
+    return api.get(`destination/${uuid}`, params);
   },
 
   getAllLocations(limit = 4) {
@@ -23,7 +23,7 @@ export default (api) =>({
       },
     }
   
-    return api.get('location', params);
+    return api.get('destination', params);
   },
 
   getAllLocationsByRegion(limit = 4, regionId) {
@@ -43,9 +43,9 @@ export default (api) =>({
           },
         },
       },
-      include: 'field_region,field_image',
+      include: 'field_region,field_hero_image',
     }
 
-    return api.get('location', params);
+    return api.get('destination', params);
   },
 })

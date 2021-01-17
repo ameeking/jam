@@ -96,7 +96,7 @@ export default {
       return this.products.filter(product => {
         return product.title.toLowerCase().includes(this.query.toLowerCase()) 
         && product.field_category.some(this.matchesCategoriesModel) 
-        && product.field_location.some(this.matchesLocationsModel)
+        && product.field_destination.some(this.matchesLocationsModel)
       })
     },
     categories() {
@@ -114,7 +114,7 @@ export default {
       let locations = {};
 
       this.filteredProducts.forEach(function (product) {
-        product.field_location.forEach(function (location) {
+        product.field_destination.forEach(function (location) {
           locations[location.id] = location;
         })
       });

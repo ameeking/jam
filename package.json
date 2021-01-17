@@ -11,7 +11,8 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.3",
+    "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/proxy": "^2.1.0",
     "flyweight": "ameeking/flyweight.git#main",
     "google-maps-api-loader": "^1.1.1",
     "jsonapi-parse": "^2.0.0",

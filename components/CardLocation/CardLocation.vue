@@ -38,8 +38,8 @@ export default {
       return null;
     },
     imagePath() {
-      if (this.location.field_image && this.location.field_image.uri) {
-        return `${this.$config.baseURL}${this.location.field_image.uri.url}`;
+      if (this.location.field_hero_image && this.location.field_hero_image.uri) {
+        return `${this.$config.baseURL}${this.location.field_hero_image.uri.url}`;
       }
 
       return null;

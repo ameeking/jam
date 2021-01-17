@@ -2,14 +2,6 @@
   <div class="l-container">
     <p>{{ body }}</p>
 
-    <h2 class="u-mt--10">Itineraries</h2>
-
-    <Grid>
-      <GridCol v-for="itinerary in itineraries" :key="itinerary.id" xs="3">
-        <CardItinerary :itinerary="itinerary" />
-      </GridCol>
-    </Grid>
-
     <h2 class="u-mt--10">Activites</h2>
 
     <Grid>
@@ -60,18 +52,16 @@ export default {
       return null;
     },
   },
-  async asyncData({ $repository, store, route }) {
+  async asyncData({ $repository, store, route, $config }) {
     let category = await $repository.category.getCategory(route.params.id);
-    let itineraries = await $repository.itinerary.getAllItinerariesByCategory(4, route.params.id);
     let activities = await $repository.activity.getAllActivitiesByCategory(4, route.params.id);
     let posts = await $repository.post.getAllPostsByCategory(4, route.params.id);
 
     store.commit('page/setTitle', category.data.title);
-    store.commit('page/setBanner', `http://drupal-9-headless.lndo.site${category.data.field_image.uri.url}`);
+    store.commit('page/setBanner', `${$config.baseURL}${category.data.field_hero_image.uri.url}`);
 
     return { 
       category: category.data,
-      itineraries: itineraries.data,
       activities: activities.data,
       posts: posts.data
     };

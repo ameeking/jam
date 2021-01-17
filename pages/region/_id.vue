@@ -9,16 +9,6 @@
 
     <LocationMap :locations="locations" />
 
-    <div class="l-container u-mt--10" v-if="itineraries.length > 0">
-      <h2>Itineraries</h2>
-
-      <Grid>
-        <GridCol v-for="itinerary in itineraries" :key="itinerary.id" xs="3">
-          <CardItinerary :itinerary="itinerary"/>
-        </GridCol>
-      </Grid>
-    </div>
-
     <div class="l-container u-mt--10" v-if="activities.length > 0">
       <h2>Activites</h2>
 
@@ -81,7 +71,6 @@ export default {
   async asyncData({ $repository, store, route }) {
     let region = await $repository.region.getRegion(route.params.id);
     let activities = await $repository.activity.getAllActivitiesByRegion(4, route.params.id);
-    let itineraries = await $repository.itinerary.getAllItinerariesByRegion(4, route.params.id);
     let posts = await $repository.post.getAllPostsByRegion(4, route.params.id);
     let locations = await $repository.location.getAllLocationsByRegion(4, route.params.id)
 
@@ -91,7 +80,6 @@ export default {
     return { 
       region: region.data,
       activities: activities.data,
-      itineraries: itineraries.data,
       posts: posts.data,
       locations: locations.data,
     };

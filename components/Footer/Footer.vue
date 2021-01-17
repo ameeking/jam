@@ -73,7 +73,7 @@ export default {
     }
   },
   async fetch () {
-    this.categories = await this.$repository.category.getAllCategories();
+    this.categories = await this.$repository.category.getAllCategories(10);
     this.locations = await this.$repository.location.getAllLocations(10);
     this.regions = await this.$repository.region.getAllRegions(10);
   }

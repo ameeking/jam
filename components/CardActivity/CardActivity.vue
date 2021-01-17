@@ -46,8 +46,8 @@ export default {
       return null;
     },
     imagePath() {
-      if (this.activity.field_image && this.activity.field_image.uri) {
-        return `${this.$config.baseURL}${this.activity.field_image.uri.url}`;
+      if (this.activity.field_hero_image && this.activity.field_hero_image.uri) {
+        return `${this.$config.baseURL}${this.activity.field_hero_image.uri.url}`;
       }
 
       return null;

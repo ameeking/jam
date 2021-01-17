@@ -50,8 +50,8 @@ export default {
       return `/itinerary/${this.itinerary.id}`;
     },
     imagePath() {
-      if (this.itinerary.field_image && this.itinerary.field_image.uri) {
-        return `${this.$config.baseURL}${this.itinerary.field_image.uri.url}`;
+      if (this.itinerary.field_hero_image && this.itinerary.field_hero_image.uri) {
+        return `${this.$config.baseURL}${this.itinerary.field_hero_image.uri.url}`;
       }
 
       return null;

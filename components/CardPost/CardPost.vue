@@ -35,8 +35,8 @@ export default {
       return null;
     },
     imagePath() {
-      if (this.post.field_image && this.post.field_image.uri) {
-        return `${this.$config.baseURL}${this.post.field_image.uri.url}`;
+      if (this.post.field_hero_image && this.post.field_hero_image.uri) {
+        return `${this.$config.baseURL}${this.post.field_hero_image.uri.url}`;
       }
       
       return null;

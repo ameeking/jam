@@ -26,8 +26,8 @@ export default {
       return this.category.title;
     },
     imagePath() {
-      if (this.category.field_image) {
-        return `${this.$config.baseURL}${this.category.field_image.uri.url}`;
+      if (this.category.field_hero_image) {
+        return `${this.$config.baseURL}${this.category.field_hero_image.uri.url}`;
       }
       
       return null;

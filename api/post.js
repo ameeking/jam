@@ -6,7 +6,7 @@ export default (api) =>({
           value: 1
         }
       },
-      include: 'field_image,field_category,uid',
+      include: 'field_hero_image,field_category,uid',
     }
   
     return api.get(`post/${uuid}`, params);
@@ -22,7 +22,7 @@ export default (api) =>({
           value: 1
         },
       },
-      include: 'field_image,field_category,uid',
+      include: 'field_hero_image,field_category,uid',
     }
   
     return api.get('post', params);
@@ -45,7 +45,7 @@ export default (api) =>({
           },
         },
       },
-      include: 'field_image,field_category,uid',
+      include: 'field_hero_image,field_category,uid',
     }
   
     return api.get('post', params);
@@ -62,13 +62,13 @@ export default (api) =>({
         },
         category: {
           condition: {
-            path: 'field_location.id',
+            path: 'field_destination.id',
             operator: '=',
             value: locationId,
           },
         },
       },
-      include: 'field_image,field_location,uid',
+      include: 'field_hero_image,field_destination,uid',
     }
   
     return api.get('post', params);
@@ -85,13 +85,13 @@ export default (api) =>({
         },
         category: {
           condition: {
-            path: 'field_location.field_region.id',
+            path: 'field_destination.field_region.id',
             operator: '=',
             value: regionId,
           },
         },
       },
-      include: 'field_image,field_location,field_location.field_region,uid',
+      include: 'field_hero_image,field_destination,field_destination.field_region,uid',
     }
   
     return api.get('post', params);
