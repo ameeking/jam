@@ -8,7 +8,7 @@
       </div>
       <h3 class="u-mb--0 u-mt--1">{{ title }}</h3>
       <p>{{ description }}</p>
-      <Button class="u-mt--auto" :href="link" type="primary">View product</Button>
+      <Button class="u-mt--auto" type="primary">View product</Button>
     </template>
   </Card>
 </template>

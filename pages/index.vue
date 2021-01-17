@@ -20,21 +20,12 @@
       </Grid>
     </div>
 
-    <div class="l-container">
-      <h2 class="u-mt--8">Popular Itineraries</h2>
-      <Grid>
-        <GridCol v-for="itinerary in itineraries" :key="itinerary.id" xs="3">
-          <CardItinerary :itinerary="itinerary"/>
-        </GridCol>
-    </Grid>
-    </div>
   </div>
 </template>
 
 <script>
 import CardCategory from "../components/CardCategory/CardCategory"
 import CardPost from "../components/CardPost/CardPost"
-import CardItinerary from "../components/CardItinerary/CardItinerary"
 import { Grid, GridCol } from "~/node_modules/flyweight"
 
 export default {
@@ -42,7 +33,6 @@ export default {
   components: {
     CardCategory,
     CardPost,
-    CardItinerary,
     Grid,
     GridCol
   },
@@ -65,13 +55,11 @@ export default {
     this.$store.commit('page/setBanner', 'https://cdn.pixabay.com/photo/2019/04/22/01/51/south-tyrol-4145438_1280.jpg');
   },
   async asyncData({ $repository }) {
-    let itineraries = await $repository.itinerary.getAllItineraries(4);
     let categories = await $repository.category.getAllCategories(6);
     let posts = await $repository.post.getAllPosts(2);
 
     return { 
       categories: categories.data,
-      itineraries: itineraries.data,
       posts: posts.data
     };
   },

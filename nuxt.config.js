@@ -17,7 +17,6 @@ export default {
     publicRuntimeConfig: {
       baseURL: process.env.BASE_URL,
       apiURL: process.env.API_URL,
-      apiPath: process.env.API_PATH,
       googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
     },
     server: server,
