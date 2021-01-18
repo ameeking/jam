@@ -1,17 +1,6 @@
 import path from 'path'
 import fs from 'fs'
 
-let server = {};
-
-if (process.env.NODE_ENV !== 'production') {
-  server = {
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, 'server.crt'))
-    }
-  }
-}
-
 export default {
     target: 'static',
     publicRuntimeConfig: {
@@ -19,7 +8,6 @@ export default {
       apiURL: process.env.API_URL,
       googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
     },
-    server: server,
     plugins: [
       '~/plugins/repository.js',
     ],
