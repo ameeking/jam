@@ -1,45 +1,38 @@
 <template>
   <div class="l-container">
-    <em>By {{post.author }}</em>
+    <em>By {{ post.uid.display_name }}</em>
     <div>
       <img :src="imagePath" />
     </div>
-    <p>{{ post.content }}</p>
+    <p>{{ post.body.value }}</p>
   </div>
 </template>
 
 <script>
-import postQuery from '~/apollo/queries/post/post'
-
 export default {
   data() {
     return {
-      post: Object
+      post: {}
     }
   },
   computed: {
     imagePath() {
-      if (!this.post.image) {
+      if (!this.post.field_image) {
         return;
       }
 
-      return `http://localhost:1337${this.post.image.url}`;
+      return `${this.$config.baseURL}${this.post.field_image.uri.url}`;
     }
   },
-  apollo: {
-    post: {
-      prefetch: true,
-      query: postQuery,
-      variables () {
-        return { id: this.$route.params.id }
-      },
-      result () {
-        this.$store.commit('page/setTitle', this.post.name);
-      }
-    }
-  },
-  created() {
-    this.$store.commit('page/setBanner', '');
+  async asyncData({ $repository, store, route }) {
+    let post = await $repository.post.getPost(route.params.id);
+
+    store.commit('page/setTitle', post.title);
+    store.commit('page/setBanner', '');
+
+    return {
+      post: post.data
+    };
   },
 }
 </script>

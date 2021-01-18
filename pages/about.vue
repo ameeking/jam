@@ -1,7 +1,6 @@
 <template>
   <div class="l-container">
     <p>This is the about page</p>
-    <nuxt-link to="/">Home</nuxt-link>
   </div>
 </template>
 

@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/category/6", {data:[{}],fetch:[],mutations:[["page\u002FsetTitle","Food"],["page\u002FsetBanner","http:\u002F\u002Flocalhost:1337\u002Fuploads\u002Ffood_1506781961370_37a89d6b3095_5b73750eab.jpeg"]]});

@@ -3,7 +3,7 @@
     <template slot="content">
       <div>
         <Chip v-for="category in categories" :key="category.id" :href="categoryHref(category.id)">
-          {{ category.name }}
+          {{ category.title }}
         </Chip>
       </div>
       <h3 class="u-mb--0 u-mt--1">{{ name }}</h3>
@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     imagePath() {
-      return `http://localhost:1337${this.image.url}`;
+      return `${this.$config.baseURL}${this.image.uri.url}`;
     },
     link() {
       return `/product/${this.id}`;

@@ -9,34 +9,47 @@
         <strong>Category</strong>
         <div v-for="category in categories" :key="category.id">
           <input type="checkbox" :id="`cat-${category.id}`" :value="category.id" v-model="categoriesModel">
-          <label :for="`cat-${category.id}`">{{ category.name }}</label>
+          <label :for="`cat-${category.id}`">{{ category.title }}</label>
         </div>
 
         <strong class="u-mt--4">Location</strong>
         <div v-for="location in locations" :key="location.id">
           <input type="checkbox" :id="location.id" :value="location.id" v-model="locationsModel">
-          <label :for="location.id">{{ location.name }}</label>
+          <label :for="location.id">{{ location.title }}</label>
         </div>
       </GridCol>
       <GridCol xs="9">
         <Grid>
           <GridCol v-for="product in filteredProducts" :key="product.id" xs="4">
             <CardProduct
-              :name="product.name" 
+              :name="product.title" 
               :id="product.id" 
-              :image="product.image" 
-              :description="product.description"
-              :categories="product.categories"
+              :image="product.field_image" 
+              :description="product.body.summary"
+              :categories="product.field_category"
             />
           </GridCol>
         </Grid>
+        <nuxt-link
+              :to="{
+                name: 'search',
+                query: { page: this.previousPage }
+              }">
+              Back
+        </nuxt-link>
+        <nuxt-link
+              :to="{
+                name: 'search',
+                query: { page: this.nextPage }
+              }">
+              Next
+        </nuxt-link>
       </GridCol>
     </Grid>
   </div>
 </template>
 
 <script>
-import productsQuery from "~/apollo/queries/product/products"
 import CardProduct from "../components/CardProduct/CardProduct"
 import { Grid, GridCol } from "~/node_modules/flyweight"
 
@@ -52,13 +65,8 @@ export default {
       products: [],
       categoriesModel: [],
       locationsModel: [],
-      query: ''
-    }
-  },
-  apollo: {
-    products: {
-      prefetch: true,
-      query: productsQuery
+      query: '',
+      page: 0
     }
   },
   methods: {
@@ -78,18 +86,24 @@ export default {
     }
   },
   computed: {
+    nextPage() {
+      return this.page + 1;
+    },
+    previousPage() {
+      return this.page - 1;
+    },
     filteredProducts() {
       return this.products.filter(product => {
-        return product.name.toLowerCase().includes(this.query.toLowerCase()) 
-        && product.categories.some(this.matchesCategoriesModel) 
-        && product.locations.some(this.matchesLocationsModel)
+        return product.title.toLowerCase().includes(this.query.toLowerCase()) 
+        && product.field_category.some(this.matchesCategoriesModel) 
+        && product.field_destination.some(this.matchesLocationsModel)
       })
     },
     categories() {
       let categories = {};
 
       this.filteredProducts.forEach(function (product) {
-        product.categories.forEach(function (category) {
+        product.field_category.forEach(function (category) {
           categories[category.id] = category;
         })
       });
@@ -100,7 +114,7 @@ export default {
       let locations = {};
 
       this.filteredProducts.forEach(function (product) {
-        product.locations.forEach(function (location) {
+        product.field_destination.forEach(function (location) {
           locations[location.id] = location;
         })
       });
@@ -111,6 +125,21 @@ export default {
   mounted() {
     this.$store.commit('page/setTitle', 'Search');
     this.$store.commit('page/setBanner', '');
+  },
+  watch: {
+    '$route.query': '$fetch'
+  },
+  async fetch() {
+    if (this.$route.query.page) {
+      this.page = parseInt(this.$route.query.page);
+    }
+    else {
+      this.page = 0;
+    }
+
+    let response = await this.$repository.product.getAllProducts(1, this.page);
+    
+    this.products = response.data;
   },
 }
 </script>

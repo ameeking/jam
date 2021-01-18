@@ -1,10 +1,10 @@
 // page.js file in the store folder
-const state = {
+export const state = () => ({
   title: '',
   banner: ''
-}
+})
 
-const mutations = {
+export const mutations = {
   setTitle(state, title) {
     state.title = title
   },
@@ -13,13 +13,7 @@ const mutations = {
   }
 }
 
-const getters = {
+export const getters = {
   getTitle: (state) => state.title,
   getBanner: (state) => state.banner,
-}
-
-export default {
-  state,
-  mutations,
-  getters
 }

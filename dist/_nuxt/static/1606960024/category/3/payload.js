@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/category/3", {data:[{}],fetch:[],mutations:[["page\u002FsetTitle","Kayaking"],["page\u002FsetBanner","http:\u002F\u002Flocalhost:1337\u002Fuploads\u002Fkayak_1521336575822_6da63fb45455_9ab153c25a.jpeg"]]});

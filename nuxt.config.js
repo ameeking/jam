@@ -1,13 +1,16 @@
-import data from './static/MOCK_DATA.json'
-
-let dynamicRoutes = () => {
- return new Promise(resolve => {
-   resolve(data.map(el => `/product/${el.id}`))
- })
-}
+import path from 'path'
+import fs from 'fs'
 
 export default {
     target: 'static',
+    publicRuntimeConfig: {
+      baseURL: process.env.BASE_URL,
+      apiURL: process.env.API_URL,
+      googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
+    },
+    plugins: [
+      '~/plugins/repository.js',
+    ],
     head: {
         title: 'Jam',
         meta: [
@@ -22,21 +25,18 @@ export default {
     build: {
       extractCSS: true
     },
-    generate: {
-      routes: dynamicRoutes
-    },
     css: [
       'normalize.css/normalize.css',
       'assets/scss/main.scss'
     ],
     modules: [
-      '@nuxtjs/apollo',
+      '@nuxtjs/axios',
+      '@nuxtjs/proxy',
     ],
-    apollo: {
-      clientConfigs: {
-        default: {
-          httpEndpoint: 'http://localhost:1337/graphql'
-        }
-      }
+    axios: {
+      proxy: true
     },
+    proxy: {
+      '/jsonapi/node/': process.env.API_URL
+    }
 }

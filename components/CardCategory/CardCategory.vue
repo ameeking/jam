@@ -15,13 +15,25 @@ export default {
     'Card': Card,
     'Button': Button
   },
-  props: ['id', 'title', 'image'],
+  props: {
+    category: {
+      type: Object,
+      required: true
+    },
+  },
   computed: {
+    title() {
+      return this.category.title;
+    },
     imagePath() {
-      return `http://localhost:1337${this.image.url}`;
+      if (this.category.field_hero_image) {
+        return `${this.$config.baseURL}${this.category.field_hero_image.uri.url}`;
+      }
+      
+      return null;
     },
     link() {
-      return `/category/${this.id}`;
+      return `/category/${this.category.id}`;
     }
   }
 };
